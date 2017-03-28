@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dc_ra_lineMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dc_ra_line" >
+    <id column="I_LINE_ID" property="iLineId" jdbcType="INTEGER" />
+    <result column="C_LINE_NA" property="cLineNa" jdbcType="VARCHAR" />
+    <result column="I_YARD_ID_DOWN" property="iYardIdDown" jdbcType="INTEGER" />
+    <result column="I_YARD_ID_UP" property="iYardIdUp" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_LINE_ID, C_LINE_NA, I_YARD_ID_DOWN, I_YARD_ID_UP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dc_ra_line
+    where I_LINE_ID = #{iLineId,jdbcType=INTEGER}
+  </select>
+  <select id="findDcRaLinePageCondition" resultMap="BaseResultMap" parameterType="PageInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        dc_ra_line 
+        
+        LIMIT #{from}, #{size}
+    </select>
+
+    <select id="findDcRaLinePageCount" resultType="java.lang.Integer" parameterType="PageInfo">
+        select count(*) count
+        from dc_ra_line
+        
+    </select>
+
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dc_ra_line
+    where I_LINE_ID = #{iLineId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dc_ra_line" >
+    <selectKey resultType="java.lang.Integer" keyProperty="iLineId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dc_ra_line (C_LINE_NA, I_YARD_ID_DOWN, I_YARD_ID_UP
+      )
+    values (#{cLineNa,jdbcType=VARCHAR}, #{iYardIdDown,jdbcType=INTEGER}, #{iYardIdUp,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dc_ra_line" >
+    <selectKey resultType="java.lang.Integer" keyProperty="iLineId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dc_ra_line
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cLineNa != null" >
+        C_LINE_NA,
+      </if>
+      <if test="iYardIdDown != null" >
+        I_YARD_ID_DOWN,
+      </if>
+      <if test="iYardIdUp != null" >
+        I_YARD_ID_UP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cLineNa != null" >
+        #{cLineNa,jdbcType=VARCHAR},
+      </if>
+      <if test="iYardIdDown != null" >
+        #{iYardIdDown,jdbcType=INTEGER},
+      </if>
+      <if test="iYardIdUp != null" >
+        #{iYardIdUp,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dc_ra_line" >
+    update dc_ra_line
+    <set >
+      <if test="cLineNa != null" >
+        C_LINE_NA = #{cLineNa,jdbcType=VARCHAR},
+      </if>
+      <if test="iYardIdDown != null" >
+        I_YARD_ID_DOWN = #{iYardIdDown,jdbcType=INTEGER},
+      </if>
+      <if test="iYardIdUp != null" >
+        I_YARD_ID_UP = #{iYardIdUp,jdbcType=INTEGER},
+      </if>
+    </set>
+    where I_LINE_ID = #{iLineId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dc_ra_line" >
+    update dc_ra_line
+    set C_LINE_NA = #{cLineNa,jdbcType=VARCHAR},
+      I_YARD_ID_DOWN = #{iYardIdDown,jdbcType=INTEGER},
+      I_YARD_ID_UP = #{iYardIdUp,jdbcType=INTEGER}
+    where I_LINE_ID = #{iLineId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dm_td_traMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dm_td_tra" >
+    <id column="I_TRA_ID" property="iTraId" jdbcType="BIGINT" />
+    <result column="C_TRA_NUM" property="cTraNum" jdbcType="VARCHAR" />
+    <result column="E_SYM_ARRDEP" property="eSymArrdep" jdbcType="INTEGER" />
+    <result column="I_LOCOM_NUM" property="iLocomNum" jdbcType="INTEGER" />
+    <result column="F_WEGH" property="fWegh" jdbcType="DECIMAL" />
+    <result column="F_LEN" property="fLen" jdbcType="DECIMAL" />
+    <result column="I_CAR_NUM" property="iCarNum" jdbcType="INTEGER" />
+    <result column="E_TRA_CHARA" property="eTraChara" jdbcType="INTEGER" />
+    <result column="I_CONS_ID" property="iConsId" jdbcType="BIGINT" />
+    <result column="E_CONS_STATE" property="eConsState" jdbcType="INTEGER" />
+    <result column="B_SYM_CHECK" property="bSymCheck" jdbcType="BIGINT" />
+    <result column="I_ORDER_ID" property="iOrderId" jdbcType="INTEGER" />
+    <result column="C_LOCOM_CO1" property="cLocomCo1" jdbcType="VARCHAR" />
+    <result column="C_LOCOM_CO2" property="cLocomCo2" jdbcType="VARCHAR" />
+    <result column="E_LOCOM_TYPE" property="eLocomType" jdbcType="INTEGER" />
+    <result column="E_PL_STATE" property="ePlState" jdbcType="INTEGER" />
+    <result column="E_WORK_NOTICE" property="eWorkNotice" jdbcType="INTEGER" />
+    <result column="E_RECORD_U" property="eRecordU" jdbcType="INTEGER" />
+    <result column="E_REASON_LATE" property="eReasonLate" jdbcType="INTEGER" />
+    <result column="E_PL_TYPE" property="ePlType" jdbcType="INTEGER" />
+    <result column="C_TRA_NUM_TB" property="cTraNumTb" jdbcType="VARCHAR" />
+    <result column="C_TRA_NUM_MATCH" property="cTraNumMatch" jdbcType="VARCHAR" />
+    <result column="C_TRA_NUM_LOCOM" property="cTraNumLocom" jdbcType="VARCHAR" />
+    <result column="C_TRA_NUM_LOCOM1" property="cTraNumLocom1" jdbcType="VARCHAR" />
+    <result column="B_PL_LOCK" property="bPlLock" jdbcType="BIGINT" />
+    <result column="D_LOCOM" property="dLocom" jdbcType="TIMESTAMP" />
+    <result column="C_OP_LOCOM" property="cOpLocom" jdbcType="VARCHAR" />
+    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
+    <result column="B_VOICE_STATE" property="bVoiceState" jdbcType="BIGINT" />
+    <result column="I_LINE_ID_ARRDEP" property="iLineIdArrdep" jdbcType="INTEGER" />
+    <result column="D_FA_NOTIFY" property="dFaNotify" jdbcType="TIMESTAMP" />
+    <result column="D_TRA_TIME" property="dTraTime" jdbcType="TIMESTAMP" />
+    <result column="C_ATTENTION" property="cAttention" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="QcworkResultMap" type="com.hengaiw.commons.result.QcworkVo" >
+    <id column="I_TRA_ID" property="iTraId" jdbcType="BIGINT" />
+    <result column="C_TRA_NUM" property="cTraNum" jdbcType="VARCHAR" />
+    <result column="E_SYM_ARRDEP" property="eSymArrdep" jdbcType="INTEGER" />
+    <result column="I_CONS_ID" property="iConsId" jdbcType="BIGINT" />
+    <result column="E_CONS_STATE" property="eConsState" jdbcType="INTEGER" />
+    <result column="B_SYM_CHECK" property="bSymCheck" jdbcType="BIGINT" />
+    <result column="E_PL_STATE" property="ePlState" jdbcType="INTEGER" />
+    <result column="I_LINE_ID_ARRDEP" property="iLineIdArrdep" jdbcType="INTEGER" />
+    <result column="D_FA_NOTIFY" property="dFaNotify" jdbcType="TIMESTAMP" />
+    <result column="D_TRA_TIME" property="dTraTime" jdbcType="TIMESTAMP" />
+    <result column="C_ATTENTION" property="cAttention" jdbcType="VARCHAR" />
+    <result column="QCWORK_STATUS" property="qcworkStatus" jdbcType="BOOLEAN" />
+    <result column="QCWORK_USER" property="qcworkUser" jdbcType="INTEGER" />
+    <result column="QCWORK_USER_NAME" property="qcworkUserName" jdbcType="VARCHAR" />
+    <result column="QCWORK_BEGINTIME" property="qcworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="QCWORK_ENDTIME" property="qcworkEndtime" jdbcType="TIMESTAMP" />
+    <result column="QCWORK_SEQ" property="qcworkSeq" jdbcType="INTEGER" />
+    <result column="QCWORK_UPDATETIME" property="qcworkUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_TRA_ID, C_TRA_NUM, E_SYM_ARRDEP, I_LOCOM_NUM, F_WEGH, F_LEN, I_CAR_NUM, E_TRA_CHARA, 
+    I_CONS_ID, E_CONS_STATE, B_SYM_CHECK, I_ORDER_ID, C_LOCOM_CO1, C_LOCOM_CO2, E_LOCOM_TYPE, 
+    E_PL_STATE, E_WORK_NOTICE, E_RECORD_U, E_REASON_LATE, E_PL_TYPE, C_TRA_NUM_TB, C_TRA_NUM_MATCH, 
+    C_TRA_NUM_LOCOM, C_TRA_NUM_LOCOM1, B_PL_LOCK, D_LOCOM, C_OP_LOCOM, C_REMARK, B_VOICE_STATE, 
+    I_LINE_ID_ARRDEP, D_FA_NOTIFY, D_TRA_TIME, C_ATTENTION
+  </sql>
+  <sql id="Qcwork_Column_List" >
+    t.I_TRA_ID, C_TRA_NUM, E_SYM_ARRDEP,I_CONS_ID, E_CONS_STATE, B_SYM_CHECK,I_LINE_ID_ARRDEP,
+    E_PL_STATE, D_FA_NOTIFY, D_TRA_TIME, C_ATTENTION,QCWORK_STATUS, QCWORK_USER,u.name as QCWORK_USER_NAME,QCWORK_BEGINTIME, QCWORK_ENDTIME, QCWORK_SEQ, 
+    QCWORK_UPDATETIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_td_tra
+    where I_TRA_ID = #{iTraId,jdbcType=BIGINT}
+  </select>
+  <select id="findDmTdTraPageCondition" resultMap="BaseResultMap" parameterType="PageInfo">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        dm_td_tra 
+        
+        LIMIT #{from}, #{size}
+    </select>
+
+    <select id="findDmTdTraPageCount" resultType="java.lang.Integer" parameterType="PageInfo">
+        select count(*) count
+        from dm_td_tra
+        
+    </select>
+    
+    <select id="selectQcworkByPrimaryKey" resultMap="QcworkResultMap" parameterType="java.lang.Long" >
+	    select 
+	    <include refid="Qcwork_Column_List" />
+	    from 
+	    dm_td_tra t
+        
+        LEFT JOIN work s ON s.I_TRA_ID = t.I_TRA_ID
+        
+        LEFT JOIN user u ON s.QCWORK_USER = u.id
+        
+	    where t.I_TRA_ID = #{iTraId,jdbcType=BIGINT}
+	</select>
+	<select id="selectByQcworkSeq" resultMap="QcworkResultMap" parameterType="java.lang.Integer" >
+	    select 
+	    <include refid="Qcwork_Column_List" />
+	    from dm_td_tra t
+        
+        LEFT JOIN work s ON s.I_TRA_ID = t.I_TRA_ID
+        LEFT JOIN user u ON s.QCWORK_USER = u.id
+	    where s.QCWORK_SEQ = #{qcworkSeq,jdbcType=INTEGER}
+	    limit 1
+	  </select>
+	  <select id="selectByBigQcworkSeq" resultMap="QcworkResultMap" parameterType="java.lang.Integer" >
+	    select 
+	    <include refid="Qcwork_Column_List" />
+	    from dm_td_tra t
+        
+        LEFT JOIN work s ON s.I_TRA_ID = t.I_TRA_ID
+        LEFT JOIN user u ON s.QCWORK_USER = u.id
+	    where s.QCWORK_SEQ &gt; #{qcworkSeq,jdbcType=INTEGER}
+	    limit 1
+	  </select>
+	  <select id="selectBySmallQcworkSeq" resultMap="QcworkResultMap" parameterType="java.lang.Integer" >
+	    select 
+	    <include refid="Qcwork_Column_List" />
+	    from dm_td_tra t
+        
+        LEFT JOIN work s ON s.I_TRA_ID = t.I_TRA_ID
+        LEFT JOIN user u ON s.QCWORK_USER = u.id
+	    where s.QCWORK_SEQ &lt; #{qcworkSeq,jdbcType=INTEGER}
+	    
+	    order by  QCWORK_SEQ desc
+	    
+	    limit 1
+	  </select>
+    <select id="findQcworkPageCondition" resultMap="QcworkResultMap" parameterType="PageInfo">
+        SELECT
+        <include refid="Qcwork_Column_List" />
+        FROM
+        dm_td_tra t
+        
+        LEFT JOIN work s ON s.I_TRA_ID = t.I_TRA_ID
+        LEFT JOIN user u ON s.QCWORK_USER = u.id
+        <where>
+        	E_PL_STATE &lt;3
+        	<if test=" condition.cTraNum != null and condition.cTraNum != '' ">
+                <![CDATA[and t.C_TRA_NUM LIKE '%${condition.cTraNum}%']]> 
+            </if>
+            <if test=" condition.iLineIdArrdep != null and condition.iLineIdArrdep != '' ">
+                <![CDATA[and I_LINE_ID_ARRDEP LIKE '%${condition.iLineIdArrdep}%']]> 
+            </if>
+            <if test=" condition.eSymArrdep != null and condition.eSymArrdep!= ''">
+                <![CDATA[and E_SYM_ARRDEP =#{condition.eSymArrdep}]]> 
+            </if>
+            <if test=" condition.dFaNotify_begin != null and condition.dFaNotify_begin!= '' and  condition.dFaNotify_end != null and condition.dFaNotify_end!= '' ">
+                <![CDATA[and D_FA_NOTIFY >=#{condition.dFaNotify_begin} and D_FA_NOTIFY <=#{condition.dFaNotify_end}]]> 
+            </if>
+        </where>
+        ORDER BY QCWORK_STATUS asc,QCWORK_SEQ asc
+        <if test="sort != null">
+        	  ${sort} ${order}
+        </if>
+        LIMIT #{from}, #{size}
+    </select>
+
+    <select id="findQcworkPageCount" resultType="java.lang.Integer" parameterType="PageInfo">
+        select count(*) count
+        from dm_td_tra
+        <where>
+        	E_PL_STATE &lt;3
+        	<if test=" condition.cTraNum != null and condition.cTraNum != '' ">
+                <![CDATA[and C_TRA_NUM LIKE '%${condition.cTraNum}%']]> 
+            </if>
+            <if test=" condition.iLineIdArrdep != null and condition.iLineIdArrdep != '' ">
+                <![CDATA[and I_LINE_ID_ARRDEP LIKE '%${condition.iLineIdArrdep}%']]> 
+            </if>
+            <if test=" condition.eSymArrdep != null and condition.eSymArrdep!= ''">
+                <![CDATA[and E_SYM_ARRDEP =#{condition.eSymArrdep}]]> 
+            </if>
+            <if test=" condition.dFaNotify_begin != null and condition.dFaNotify_begin!= '' and  condition.dFaNotify_end != null and condition.dFaNotify_end!= '' ">
+                <![CDATA[and D_FA_NOTIFY >=#{condition.dFaNotify_begin} and D_FA_NOTIFY <=#{condition.dFaNotify_end}]]> 
+            </if>
+        </where>
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dm_td_tra
+    where I_TRA_ID = #{iTraId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dm_td_tra" >
+    <selectKey resultType="java.lang.Long" keyProperty="iTraId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_td_tra (C_TRA_NUM, E_SYM_ARRDEP, I_LOCOM_NUM, 
+      F_WEGH, F_LEN, I_CAR_NUM, 
+      E_TRA_CHARA, I_CONS_ID, E_CONS_STATE, 
+      B_SYM_CHECK, I_ORDER_ID, C_LOCOM_CO1, 
+      C_LOCOM_CO2, E_LOCOM_TYPE, E_PL_STATE, 
+      E_WORK_NOTICE, E_RECORD_U, E_REASON_LATE, 
+      E_PL_TYPE, C_TRA_NUM_TB, C_TRA_NUM_MATCH, 
+      C_TRA_NUM_LOCOM, C_TRA_NUM_LOCOM1, B_PL_LOCK, 
+      D_LOCOM, C_OP_LOCOM, C_REMARK, 
+      B_VOICE_STATE, I_LINE_ID_ARRDEP, D_FA_NOTIFY, 
+      D_TRA_TIME, C_ATTENTION)
+    values (#{cTraNum,jdbcType=VARCHAR}, #{eSymArrdep,jdbcType=INTEGER}, #{iLocomNum,jdbcType=INTEGER}, 
+      #{fWegh,jdbcType=DECIMAL}, #{fLen,jdbcType=DECIMAL}, #{iCarNum,jdbcType=INTEGER}, 
+      #{eTraChara,jdbcType=INTEGER}, #{iConsId,jdbcType=BIGINT}, #{eConsState,jdbcType=INTEGER}, 
+      #{bSymCheck,jdbcType=BIGINT}, #{iOrderId,jdbcType=INTEGER}, #{cLocomCo1,jdbcType=VARCHAR}, 
+      #{cLocomCo2,jdbcType=VARCHAR}, #{eLocomType,jdbcType=INTEGER}, #{ePlState,jdbcType=INTEGER}, 
+      #{eWorkNotice,jdbcType=INTEGER}, #{eRecordU,jdbcType=INTEGER}, #{eReasonLate,jdbcType=INTEGER}, 
+      #{ePlType,jdbcType=INTEGER}, #{cTraNumTb,jdbcType=VARCHAR}, #{cTraNumMatch,jdbcType=VARCHAR}, 
+      #{cTraNumLocom,jdbcType=VARCHAR}, #{cTraNumLocom1,jdbcType=VARCHAR}, #{bPlLock,jdbcType=BIGINT}, 
+      #{dLocom,jdbcType=TIMESTAMP}, #{cOpLocom,jdbcType=VARCHAR}, #{cRemark,jdbcType=VARCHAR}, 
+      #{bVoiceState,jdbcType=BIGINT}, #{iLineIdArrdep,jdbcType=INTEGER}, #{dFaNotify,jdbcType=TIMESTAMP}, 
+      #{dTraTime,jdbcType=TIMESTAMP}, #{cAttention,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dm_td_tra" >
+    <selectKey resultType="java.lang.Long" keyProperty="iTraId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_td_tra
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cTraNum != null" >
+        C_TRA_NUM,
+      </if>
+      <if test="eSymArrdep != null" >
+        E_SYM_ARRDEP,
+      </if>
+      <if test="iLocomNum != null" >
+        I_LOCOM_NUM,
+      </if>
+      <if test="fWegh != null" >
+        F_WEGH,
+      </if>
+      <if test="fLen != null" >
+        F_LEN,
+      </if>
+      <if test="iCarNum != null" >
+        I_CAR_NUM,
+      </if>
+      <if test="eTraChara != null" >
+        E_TRA_CHARA,
+      </if>
+      <if test="iConsId != null" >
+        I_CONS_ID,
+      </if>
+      <if test="eConsState != null" >
+        E_CONS_STATE,
+      </if>
+      <if test="bSymCheck != null" >
+        B_SYM_CHECK,
+      </if>
+      <if test="iOrderId != null" >
+        I_ORDER_ID,
+      </if>
+      <if test="cLocomCo1 != null" >
+        C_LOCOM_CO1,
+      </if>
+      <if test="cLocomCo2 != null" >
+        C_LOCOM_CO2,
+      </if>
+      <if test="eLocomType != null" >
+        E_LOCOM_TYPE,
+      </if>
+      <if test="ePlState != null" >
+        E_PL_STATE,
+      </if>
+      <if test="eWorkNotice != null" >
+        E_WORK_NOTICE,
+      </if>
+      <if test="eRecordU != null" >
+        E_RECORD_U,
+      </if>
+      <if test="eReasonLate != null" >
+        E_REASON_LATE,
+      </if>
+      <if test="ePlType != null" >
+        E_PL_TYPE,
+      </if>
+      <if test="cTraNumTb != null" >
+        C_TRA_NUM_TB,
+      </if>
+      <if test="cTraNumMatch != null" >
+        C_TRA_NUM_MATCH,
+      </if>
+      <if test="cTraNumLocom != null" >
+        C_TRA_NUM_LOCOM,
+      </if>
+      <if test="cTraNumLocom1 != null" >
+        C_TRA_NUM_LOCOM1,
+      </if>
+      <if test="bPlLock != null" >
+        B_PL_LOCK,
+      </if>
+      <if test="dLocom != null" >
+        D_LOCOM,
+      </if>
+      <if test="cOpLocom != null" >
+        C_OP_LOCOM,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
+      </if>
+      <if test="bVoiceState != null" >
+        B_VOICE_STATE,
+      </if>
+      <if test="iLineIdArrdep != null" >
+        I_LINE_ID_ARRDEP,
+      </if>
+      <if test="dFaNotify != null" >
+        D_FA_NOTIFY,
+      </if>
+      <if test="dTraTime != null" >
+        D_TRA_TIME,
+      </if>
+      <if test="cAttention != null" >
+        C_ATTENTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cTraNum != null" >
+        #{cTraNum,jdbcType=VARCHAR},
+      </if>
+      <if test="eSymArrdep != null" >
+        #{eSymArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="iLocomNum != null" >
+        #{iLocomNum,jdbcType=INTEGER},
+      </if>
+      <if test="fWegh != null" >
+        #{fWegh,jdbcType=DECIMAL},
+      </if>
+      <if test="fLen != null" >
+        #{fLen,jdbcType=DECIMAL},
+      </if>
+      <if test="iCarNum != null" >
+        #{iCarNum,jdbcType=INTEGER},
+      </if>
+      <if test="eTraChara != null" >
+        #{eTraChara,jdbcType=INTEGER},
+      </if>
+      <if test="iConsId != null" >
+        #{iConsId,jdbcType=BIGINT},
+      </if>
+      <if test="eConsState != null" >
+        #{eConsState,jdbcType=INTEGER},
+      </if>
+      <if test="bSymCheck != null" >
+        #{bSymCheck,jdbcType=BIGINT},
+      </if>
+      <if test="iOrderId != null" >
+        #{iOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="cLocomCo1 != null" >
+        #{cLocomCo1,jdbcType=VARCHAR},
+      </if>
+      <if test="cLocomCo2 != null" >
+        #{cLocomCo2,jdbcType=VARCHAR},
+      </if>
+      <if test="eLocomType != null" >
+        #{eLocomType,jdbcType=INTEGER},
+      </if>
+      <if test="ePlState != null" >
+        #{ePlState,jdbcType=INTEGER},
+      </if>
+      <if test="eWorkNotice != null" >
+        #{eWorkNotice,jdbcType=INTEGER},
+      </if>
+      <if test="eRecordU != null" >
+        #{eRecordU,jdbcType=INTEGER},
+      </if>
+      <if test="eReasonLate != null" >
+        #{eReasonLate,jdbcType=INTEGER},
+      </if>
+      <if test="ePlType != null" >
+        #{ePlType,jdbcType=INTEGER},
+      </if>
+      <if test="cTraNumTb != null" >
+        #{cTraNumTb,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumMatch != null" >
+        #{cTraNumMatch,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumLocom != null" >
+        #{cTraNumLocom,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumLocom1 != null" >
+        #{cTraNumLocom1,jdbcType=VARCHAR},
+      </if>
+      <if test="bPlLock != null" >
+        #{bPlLock,jdbcType=BIGINT},
+      </if>
+      <if test="dLocom != null" >
+        #{dLocom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOpLocom != null" >
+        #{cOpLocom,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bVoiceState != null" >
+        #{bVoiceState,jdbcType=BIGINT},
+      </if>
+      <if test="iLineIdArrdep != null" >
+        #{iLineIdArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="dFaNotify != null" >
+        #{dFaNotify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dTraTime != null" >
+        #{dTraTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cAttention != null" >
+        #{cAttention,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dm_td_tra" >
+    update dm_td_tra
+    <set >
+      <if test="cTraNum != null" >
+        C_TRA_NUM = #{cTraNum,jdbcType=VARCHAR},
+      </if>
+      <if test="eSymArrdep != null" >
+        E_SYM_ARRDEP = #{eSymArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="iLocomNum != null" >
+        I_LOCOM_NUM = #{iLocomNum,jdbcType=INTEGER},
+      </if>
+      <if test="fWegh != null" >
+        F_WEGH = #{fWegh,jdbcType=DECIMAL},
+      </if>
+      <if test="fLen != null" >
+        F_LEN = #{fLen,jdbcType=DECIMAL},
+      </if>
+      <if test="iCarNum != null" >
+        I_CAR_NUM = #{iCarNum,jdbcType=INTEGER},
+      </if>
+      <if test="eTraChara != null" >
+        E_TRA_CHARA = #{eTraChara,jdbcType=INTEGER},
+      </if>
+      <if test="iConsId != null" >
+        I_CONS_ID = #{iConsId,jdbcType=BIGINT},
+      </if>
+      <if test="eConsState != null" >
+        E_CONS_STATE = #{eConsState,jdbcType=INTEGER},
+      </if>
+      <if test="bSymCheck != null" >
+        B_SYM_CHECK = #{bSymCheck,jdbcType=BIGINT},
+      </if>
+      <if test="iOrderId != null" >
+        I_ORDER_ID = #{iOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="cLocomCo1 != null" >
+        C_LOCOM_CO1 = #{cLocomCo1,jdbcType=VARCHAR},
+      </if>
+      <if test="cLocomCo2 != null" >
+        C_LOCOM_CO2 = #{cLocomCo2,jdbcType=VARCHAR},
+      </if>
+      <if test="eLocomType != null" >
+        E_LOCOM_TYPE = #{eLocomType,jdbcType=INTEGER},
+      </if>
+      <if test="ePlState != null" >
+        E_PL_STATE = #{ePlState,jdbcType=INTEGER},
+      </if>
+      <if test="eWorkNotice != null" >
+        E_WORK_NOTICE = #{eWorkNotice,jdbcType=INTEGER},
+      </if>
+      <if test="eRecordU != null" >
+        E_RECORD_U = #{eRecordU,jdbcType=INTEGER},
+      </if>
+      <if test="eReasonLate != null" >
+        E_REASON_LATE = #{eReasonLate,jdbcType=INTEGER},
+      </if>
+      <if test="ePlType != null" >
+        E_PL_TYPE = #{ePlType,jdbcType=INTEGER},
+      </if>
+      <if test="cTraNumTb != null" >
+        C_TRA_NUM_TB = #{cTraNumTb,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumMatch != null" >
+        C_TRA_NUM_MATCH = #{cTraNumMatch,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumLocom != null" >
+        C_TRA_NUM_LOCOM = #{cTraNumLocom,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumLocom1 != null" >
+        C_TRA_NUM_LOCOM1 = #{cTraNumLocom1,jdbcType=VARCHAR},
+      </if>
+      <if test="bPlLock != null" >
+        B_PL_LOCK = #{bPlLock,jdbcType=BIGINT},
+      </if>
+      <if test="dLocom != null" >
+        D_LOCOM = #{dLocom,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOpLocom != null" >
+        C_OP_LOCOM = #{cOpLocom,jdbcType=VARCHAR},
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bVoiceState != null" >
+        B_VOICE_STATE = #{bVoiceState,jdbcType=BIGINT},
+      </if>
+      <if test="iLineIdArrdep != null" >
+        I_LINE_ID_ARRDEP = #{iLineIdArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="dFaNotify != null" >
+        D_FA_NOTIFY = #{dFaNotify,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dTraTime != null" >
+        D_TRA_TIME = #{dTraTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cAttention != null" >
+        C_ATTENTION = #{cAttention,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where I_TRA_ID = #{iTraId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dm_td_tra" >
+    update dm_td_tra
+    set C_TRA_NUM = #{cTraNum,jdbcType=VARCHAR},
+      E_SYM_ARRDEP = #{eSymArrdep,jdbcType=INTEGER},
+      I_LOCOM_NUM = #{iLocomNum,jdbcType=INTEGER},
+      F_WEGH = #{fWegh,jdbcType=DECIMAL},
+      F_LEN = #{fLen,jdbcType=DECIMAL},
+      I_CAR_NUM = #{iCarNum,jdbcType=INTEGER},
+      E_TRA_CHARA = #{eTraChara,jdbcType=INTEGER},
+      I_CONS_ID = #{iConsId,jdbcType=BIGINT},
+      E_CONS_STATE = #{eConsState,jdbcType=INTEGER},
+      B_SYM_CHECK = #{bSymCheck,jdbcType=BIGINT},
+      I_ORDER_ID = #{iOrderId,jdbcType=INTEGER},
+      C_LOCOM_CO1 = #{cLocomCo1,jdbcType=VARCHAR},
+      C_LOCOM_CO2 = #{cLocomCo2,jdbcType=VARCHAR},
+      E_LOCOM_TYPE = #{eLocomType,jdbcType=INTEGER},
+      E_PL_STATE = #{ePlState,jdbcType=INTEGER},
+      E_WORK_NOTICE = #{eWorkNotice,jdbcType=INTEGER},
+      E_RECORD_U = #{eRecordU,jdbcType=INTEGER},
+      E_REASON_LATE = #{eReasonLate,jdbcType=INTEGER},
+      E_PL_TYPE = #{ePlType,jdbcType=INTEGER},
+      C_TRA_NUM_TB = #{cTraNumTb,jdbcType=VARCHAR},
+      C_TRA_NUM_MATCH = #{cTraNumMatch,jdbcType=VARCHAR},
+      C_TRA_NUM_LOCOM = #{cTraNumLocom,jdbcType=VARCHAR},
+      C_TRA_NUM_LOCOM1 = #{cTraNumLocom1,jdbcType=VARCHAR},
+      B_PL_LOCK = #{bPlLock,jdbcType=BIGINT},
+      D_LOCOM = #{dLocom,jdbcType=TIMESTAMP},
+      C_OP_LOCOM = #{cOpLocom,jdbcType=VARCHAR},
+      C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      B_VOICE_STATE = #{bVoiceState,jdbcType=BIGINT},
+      I_LINE_ID_ARRDEP = #{iLineIdArrdep,jdbcType=INTEGER},
+      D_FA_NOTIFY = #{dFaNotify,jdbcType=TIMESTAMP},
+      D_TRA_TIME = #{dTraTime,jdbcType=TIMESTAMP},
+      C_ATTENTION = #{cAttention,jdbcType=VARCHAR}
+    where I_TRA_ID = #{iTraId,jdbcType=BIGINT}
+  </update>
+</mapper>

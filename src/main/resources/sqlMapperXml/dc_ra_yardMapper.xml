@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dc_ra_yardMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dc_ra_yard" >
+    <id column="I_RANGE_ID" property="iRangeId" jdbcType="INTEGER" />
+    <result column="C_RANGE_NA" property="cRangeNa" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_RANGE_ID, C_RANGE_NA
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dc_ra_yard
+    where I_RANGE_ID = #{iRangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dc_ra_yard
+    where I_RANGE_ID = #{iRangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dc_ra_yard" >
+    <selectKey resultType="java.lang.Integer" keyProperty="iRangeId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dc_ra_yard (C_RANGE_NA)
+    values (#{cRangeNa,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dc_ra_yard" >
+    <selectKey resultType="java.lang.Integer" keyProperty="iRangeId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dc_ra_yard
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cRangeNa != null" >
+        C_RANGE_NA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cRangeNa != null" >
+        #{cRangeNa,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dc_ra_yard" >
+    update dc_ra_yard
+    <set >
+      <if test="cRangeNa != null" >
+        C_RANGE_NA = #{cRangeNa,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where I_RANGE_ID = #{iRangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dc_ra_yard" >
+    update dc_ra_yard
+    set C_RANGE_NA = #{cRangeNa,jdbcType=VARCHAR}
+    where I_RANGE_ID = #{iRangeId,jdbcType=INTEGER}
+  </update>
+</mapper>

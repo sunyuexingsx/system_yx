@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dm_express_carsMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dm_express_cars" >
+    <id column="I_CARS_ID" property="iCarsId" jdbcType="BIGINT" />
+    <result column="I_LINE_ID" property="iLineId" jdbcType="INTEGER" />
+    <result column="I_CAR_IN_NO" property="iCarInNo" jdbcType="INTEGER" />
+    <result column="C_CAR_NOTE" property="cCarNote" jdbcType="VARCHAR" />
+    <result column="QCWORK_STATUS" property="qcworkStatus" jdbcType="BOOLEAN" />
+    <result column="QCWORK_USER" property="qcworkUser" jdbcType="INTEGER" />
+    <result column="QCWORK_BEGINTIME" property="qcworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="QCWORK_ENDTIME" property="qcworkEndtime" jdbcType="TIMESTAMP" />
+    <result column="QCWORK_SEQ" property="qcworkSeq" jdbcType="INTEGER" />
+    <result column="QCWORK_UPDATETIME" property="qcworkUpdatetime" jdbcType="TIMESTAMP" />
+    <result column="ENDWORK_STATUS" property="endworkStatus" jdbcType="BOOLEAN" />
+    <result column="ENDWORK_BEGINTIME" property="endworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="ENDWORK_ENDTIME" property="endworkEndtime" jdbcType="TIMESTAMP" />
+    <result column="ENDWORK_SEQ" property="endworkSeq" jdbcType="INTEGER" />
+    <result column="ENDWORK_UPDATETIME" property="endworkUpdatetime" jdbcType="TIMESTAMP" />
+    <result column="AIRWORK_STATUS" property="airworkStatus" jdbcType="BOOLEAN" />
+    <result column="AIRWORK_BEGINTIME" property="airworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="AIRWORK_ENDTIME" property="airworkEndtime" jdbcType="TIMESTAMP" />
+    <result column="AIRWORK_SEQ" property="airworkSeq" jdbcType="INTEGER" />
+    <result column="AIRWORK_UPDATETIME" property="airworkUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="QcworkVoResultMap" type="com.hengaiw.commons.result.QcworkVo" >
+    <id column="I_CAR_ID" property="i_CAR_ID" jdbcType="BIGINT" />
+    <result column="D_TRA_ARR" property="d_TRA_ARR" jdbcType="TIMESTAMP" />
+    <result column="C_TRA_NUM_ARR" property="c_TRA_NUM_ARR" jdbcType="VARCHAR" />
+    <result column="I_LINE_ID" property="i_LINE_ID" jdbcType="INTEGER" />
+    <result column="C_RANGE_NA" property="c_RANGE_NA" jdbcType="VARCHAR" />
+    <result column="QCWORK_STATUS" property="qcworkStatus" jdbcType="INTEGER" />
+    <result column="QCWORK_BEGINTIME" property="qcworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="QCWORK_ENDTIME" property="qcworkEndtime" jdbcType="TIMESTAMP" />
+    <result column="QCWORK_SEQ" property="qcworkSeq" jdbcType="INTEGER" />
+    <result column="QCWORK_UPDATETIME" property="qcworkUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="EndworkVoResultMap" type="com.hengaiw.commons.result.EndworkVo" >
+    <id column="I_CAR_ID" property="i_CAR_ID" jdbcType="BIGINT" />
+    <result column="D_TRA_ARR" property="d_TRA_ARR" jdbcType="TIMESTAMP" />
+    <result column="C_TRA_NUM_ARR" property="c_TRA_NUM_ARR" jdbcType="VARCHAR" />
+    <result column="I_LINE_ID" property="i_LINE_ID" jdbcType="INTEGER" />
+    <result column="C_RANGE_NA" property="c_RANGE_NA" jdbcType="VARCHAR" />
+    <result column="ENDWORK_STATUS" property="endworkStatus" jdbcType="INTEGER" />
+    <result column="ENDWORK_BEGINTIME" property="endworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="ENDWORK_ENDTIME" property="endworkEndtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="AirworkVoResultMap" type="com.hengaiw.commons.result.AirworkVo" >
+    <id column="I_CAR_ID" property="i_CAR_ID" jdbcType="BIGINT" />
+    <result column="D_TRA_ARR" property="d_TRA_ARR" jdbcType="TIMESTAMP" />
+    <result column="C_TRA_NUM_ARR" property="c_TRA_NUM_ARR" jdbcType="VARCHAR" />
+    <result column="I_LINE_ID" property="i_LINE_ID" jdbcType="INTEGER" />
+    <result column="C_RANGE_NA" property="c_RANGE_NA" jdbcType="VARCHAR" />
+    <result column="AIRWORK_STATUS" property="airworkStatus" jdbcType="INTEGER" />
+    <result column="AIRWORK_BEGINTIME" property="airworkBegintime" jdbcType="TIMESTAMP" />
+    <result column="AIRWORK_ENDTIME" property="airworkEndtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_CARS_ID, I_LINE_ID, I_CAR_IN_NO, C_CAR_NOTE, QCWORK_STATUS, QCWORK_USER, QCWORK_BEGINTIME, 
+    QCWORK_ENDTIME, QCWORK_SEQ, QCWORK_UPDATETIME, ENDWORK_STATUS, ENDWORK_BEGINTIME, 
+    ENDWORK_ENDTIME, ENDWORK_SEQ, ENDWORK_UPDATETIME, AIRWORK_STATUS, AIRWORK_BEGINTIME, 
+    AIRWORK_ENDTIME, AIRWORK_SEQ, AIRWORK_UPDATETIME
+  </sql>
+  <sql id="Qcwork_Column_List" >
+    dxc.I_CARS_ID as I_CAR_ID, dxc.I_LINE_ID,dxc.QCWORK_STATUS,dxc.QCWORK_BEGINTIME,dxc.QCWORK_ENDTIME, dxc.QCWORK_SEQ,dxc.QCWORK_UPDATETIME,D_TRA_ARR, C_TRA_NUM_ARR,yard.C_RANGE_NA
+  </sql>
+  <sql id="Endwork_Column_List" >
+    dxc.I_CARS_ID as I_CAR_ID, dxc.I_LINE_ID,dxc.ENDWORK_STATUS,dxc.ENDWORK_BEGINTIME,dxc.ENDWORK_ENDTIME, D_TRA_ARR, C_TRA_NUM_ARR,yard.C_RANGE_NA
+  </sql>
+  <sql id="Airwork_Column_List" >
+    dxc.I_CARS_ID as I_CAR_ID, dxc.I_LINE_ID,dxc.AIRWORK_STATUS,dxc.AIRWORK_BEGINTIME,dxc.AIRWORK_ENDTIME, D_TRA_ARR, C_TRA_NUM_ARR,yard.C_RANGE_NA
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_express_cars
+    where I_CARS_ID = #{iCarsId,jdbcType=BIGINT}
+    limit 1
+  </select>
+  <select id="selectByQcworkSeq" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_express_cars
+    where QCWORK_SEQ = #{qcworkSeq,jdbcType=INTEGER}
+    limit 1
+  </select>
+  <select id="selectByBigQcworkSeq" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_express_cars
+    where QCWORK_SEQ &gt; #{qcworkSeq,jdbcType=INTEGER}
+    limit 1
+  </select>
+  <select id="selectBySmallQcworkSeq" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_express_cars
+    where QCWORK_SEQ &lt; #{qcworkSeq,jdbcType=INTEGER}
+    limit 1
+  </select>
+  <select id="findQcworkPageCondition" resultMap="QcworkVoResultMap" parameterType="PageInfo">
+        SELECT
+        <include refid="Qcwork_Column_List" />
+        FROM
+        dm_express_cars dxc
+        LEFT JOIN dm_td_constext dtc ON dxc.I_CARS_ID =dtc.I_CAR_ID
+        LEFT JOIN dc_ra_line line ON dxc.I_LINE_ID =line.I_LINE_ID
+        LEFT JOIN dc_ra_yard yard ON line.I_YARD_ID_DOWN =yard.I_RANGE_ID
+        
+        ORDER BY QCWORK_STATUS asc, QCWORK_SEQ asc
+        <if test="sort != null">
+        , ${sort} ${order}
+        </if>
+        LIMIT #{from}, #{size}
+    </select>
+
+    <select id="findQcworkPageCount" resultType="java.lang.Integer" parameterType="PageInfo">
+        select count(*) count
+        from dm_express_cars dxc
+        LEFT JOIN dm_td_constext dtc ON dxc.I_CARS_ID =dtc.I_CAR_ID
+    </select>
+  
+  <select id="findEndworkPageCondition" resultMap="EndworkVoResultMap" parameterType="PageInfo">
+        SELECT
+        <include refid="Endwork_Column_List" />
+        FROM
+        dm_express_cars dxc
+        LEFT JOIN dm_td_constext dtc ON dxc.I_CARS_ID =dtc.I_CAR_ID
+        LEFT JOIN dc_ra_line line ON dxc.I_LINE_ID =line.I_LINE_ID
+        LEFT JOIN dc_ra_yard yard ON line.I_YARD_ID_DOWN =yard.I_RANGE_ID
+        LIMIT #{from}, #{size}
+    </select>
+
+    <select id="findEndworkPageCount" resultType="java.lang.Integer" parameterType="PageInfo">
+        select count(*) count
+        from dm_express_cars dxc
+        LEFT JOIN dm_td_constext dtc ON dxc.I_CARS_ID =dtc.I_CAR_ID
+    </select>
+    <select id="findAirworkPageCondition" resultMap="AirworkVoResultMap" parameterType="PageInfo">
+        SELECT
+        <include refid="Airwork_Column_List" />
+        FROM
+        dm_express_cars dxc
+        LEFT JOIN dm_td_constext dtc ON dxc.I_CARS_ID =dtc.I_CAR_ID
+        LEFT JOIN dc_ra_line line ON dxc.I_LINE_ID =line.I_LINE_ID
+        LEFT JOIN dc_ra_yard yard ON line.I_YARD_ID_DOWN =yard.I_RANGE_ID
+        LIMIT #{from}, #{size}
+    </select>
+
+    <select id="findAirworkPageCount" resultType="java.lang.Integer" parameterType="PageInfo">
+        select count(*) count
+        from dm_express_cars dxc
+        LEFT JOIN dm_td_constext dtc ON dxc.I_CARS_ID =dtc.I_CAR_ID
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dm_express_cars
+    where I_CARS_ID = #{iCarsId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dm_express_cars" >
+    <selectKey resultType="java.lang.Long" keyProperty="iCarsId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_express_cars (I_LINE_ID, I_CAR_IN_NO, C_CAR_NOTE, 
+      QCWORK_STATUS, QCWORK_USER, QCWORK_BEGINTIME, 
+      QCWORK_ENDTIME, QCWORK_SEQ, QCWORK_UPDATETIME, 
+      ENDWORK_STATUS, ENDWORK_BEGINTIME, ENDWORK_ENDTIME, 
+      ENDWORK_SEQ, ENDWORK_UPDATETIME, AIRWORK_STATUS, 
+      AIRWORK_BEGINTIME, AIRWORK_ENDTIME, AIRWORK_SEQ, 
+      AIRWORK_UPDATETIME)
+    values (#{iLineId,jdbcType=INTEGER}, #{iCarInNo,jdbcType=INTEGER}, #{cCarNote,jdbcType=VARCHAR}, 
+      #{qcworkStatus,jdbcType=BOOLEAN}, #{qcworkUser,jdbcType=INTEGER}, #{qcworkBegintime,jdbcType=TIMESTAMP}, 
+      #{qcworkEndtime,jdbcType=TIMESTAMP}, #{qcworkSeq,jdbcType=INTEGER}, #{qcworkUpdatetime,jdbcType=TIMESTAMP}, 
+      #{endworkStatus,jdbcType=BOOLEAN}, #{endworkBegintime,jdbcType=TIMESTAMP}, #{endworkEndtime,jdbcType=TIMESTAMP}, 
+      #{endworkSeq,jdbcType=INTEGER}, #{endworkUpdatetime,jdbcType=TIMESTAMP}, #{airworkStatus,jdbcType=BOOLEAN}, 
+      #{airworkBegintime,jdbcType=TIMESTAMP}, #{airworkEndtime,jdbcType=TIMESTAMP}, #{airworkSeq,jdbcType=INTEGER}, 
+      #{airworkUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dm_express_cars" >
+    <selectKey resultType="java.lang.Long" keyProperty="iCarsId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_express_cars
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iLineId != null" >
+        I_LINE_ID,
+      </if>
+      <if test="iCarInNo != null" >
+        I_CAR_IN_NO,
+      </if>
+      <if test="cCarNote != null" >
+        C_CAR_NOTE,
+      </if>
+      <if test="qcworkStatus != null" >
+        QCWORK_STATUS,
+      </if>
+      <if test="qcworkUser != null" >
+        QCWORK_USER,
+      </if>
+      <if test="qcworkBegintime != null" >
+        QCWORK_BEGINTIME,
+      </if>
+      <if test="qcworkEndtime != null" >
+        QCWORK_ENDTIME,
+      </if>
+      <if test="qcworkSeq != null" >
+        QCWORK_SEQ,
+      </if>
+      <if test="qcworkUpdatetime != null" >
+        QCWORK_UPDATETIME,
+      </if>
+      <if test="endworkStatus != null" >
+        ENDWORK_STATUS,
+      </if>
+      <if test="endworkBegintime != null" >
+        ENDWORK_BEGINTIME,
+      </if>
+      <if test="endworkEndtime != null" >
+        ENDWORK_ENDTIME,
+      </if>
+      <if test="endworkSeq != null" >
+        ENDWORK_SEQ,
+      </if>
+      <if test="endworkUpdatetime != null" >
+        ENDWORK_UPDATETIME,
+      </if>
+      <if test="airworkStatus != null" >
+        AIRWORK_STATUS,
+      </if>
+      <if test="airworkBegintime != null" >
+        AIRWORK_BEGINTIME,
+      </if>
+      <if test="airworkEndtime != null" >
+        AIRWORK_ENDTIME,
+      </if>
+      <if test="airworkSeq != null" >
+        AIRWORK_SEQ,
+      </if>
+      <if test="airworkUpdatetime != null" >
+        AIRWORK_UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iLineId != null" >
+        #{iLineId,jdbcType=INTEGER},
+      </if>
+      <if test="iCarInNo != null" >
+        #{iCarInNo,jdbcType=INTEGER},
+      </if>
+      <if test="cCarNote != null" >
+        #{cCarNote,jdbcType=VARCHAR},
+      </if>
+      <if test="qcworkStatus != null" >
+        #{qcworkStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="qcworkUser != null" >
+        #{qcworkUser,jdbcType=INTEGER},
+      </if>
+      <if test="qcworkBegintime != null" >
+        #{qcworkBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qcworkEndtime != null" >
+        #{qcworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qcworkSeq != null" >
+        #{qcworkSeq,jdbcType=INTEGER},
+      </if>
+      <if test="qcworkUpdatetime != null" >
+        #{qcworkUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endworkStatus != null" >
+        #{endworkStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="endworkBegintime != null" >
+        #{endworkBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endworkEndtime != null" >
+        #{endworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endworkSeq != null" >
+        #{endworkSeq,jdbcType=INTEGER},
+      </if>
+      <if test="endworkUpdatetime != null" >
+        #{endworkUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airworkStatus != null" >
+        #{airworkStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="airworkBegintime != null" >
+        #{airworkBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airworkEndtime != null" >
+        #{airworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airworkSeq != null" >
+        #{airworkSeq,jdbcType=INTEGER},
+      </if>
+      <if test="airworkUpdatetime != null" >
+        #{airworkUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateQcworkSortById">
+    update dm_express_cars
+    set QCWORK_SEQ = #{1},
+    QCWORK_UPDATETIME = now()
+    where I_CARS_ID = #{0}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dm_express_cars" >
+    update dm_express_cars
+    <set >
+      <if test="iLineId != null" >
+        I_LINE_ID = #{iLineId,jdbcType=INTEGER},
+      </if>
+      <if test="iCarInNo != null" >
+        I_CAR_IN_NO = #{iCarInNo,jdbcType=INTEGER},
+      </if>
+      <if test="cCarNote != null" >
+        C_CAR_NOTE = #{cCarNote,jdbcType=VARCHAR},
+      </if>
+      <if test="qcworkStatus != null" >
+        QCWORK_STATUS = #{qcworkStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="qcworkUser != null" >
+        QCWORK_USER = #{qcworkUser,jdbcType=INTEGER},
+      </if>
+      <if test="qcworkBegintime != null" >
+        QCWORK_BEGINTIME = #{qcworkBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qcworkEndtime != null" >
+        QCWORK_ENDTIME = #{qcworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="qcworkSeq != null" >
+        QCWORK_SEQ = #{qcworkSeq,jdbcType=INTEGER},
+      </if>
+      <if test="qcworkUpdatetime != null" >
+        QCWORK_UPDATETIME = #{qcworkUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endworkStatus != null" >
+        ENDWORK_STATUS = #{endworkStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="endworkBegintime != null" >
+        ENDWORK_BEGINTIME = #{endworkBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endworkEndtime != null" >
+        ENDWORK_ENDTIME = #{endworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endworkSeq != null" >
+        ENDWORK_SEQ = #{endworkSeq,jdbcType=INTEGER},
+      </if>
+      <if test="endworkUpdatetime != null" >
+        ENDWORK_UPDATETIME = #{endworkUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airworkStatus != null" >
+        AIRWORK_STATUS = #{airworkStatus,jdbcType=BOOLEAN},
+      </if>
+      <if test="airworkBegintime != null" >
+        AIRWORK_BEGINTIME = #{airworkBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airworkEndtime != null" >
+        AIRWORK_ENDTIME = #{airworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airworkSeq != null" >
+        AIRWORK_SEQ = #{airworkSeq,jdbcType=INTEGER},
+      </if>
+      <if test="airworkUpdatetime != null" >
+        AIRWORK_UPDATETIME = #{airworkUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where I_CARS_ID = #{iCarsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dm_express_cars" >
+    update dm_express_cars
+    set I_LINE_ID = #{iLineId,jdbcType=INTEGER},
+      I_CAR_IN_NO = #{iCarInNo,jdbcType=INTEGER},
+      C_CAR_NOTE = #{cCarNote,jdbcType=VARCHAR},
+      QCWORK_STATUS = #{qcworkStatus,jdbcType=BOOLEAN},
+      QCWORK_USER = #{qcworkUser,jdbcType=INTEGER},
+      QCWORK_BEGINTIME = #{qcworkBegintime,jdbcType=TIMESTAMP},
+      QCWORK_ENDTIME = #{qcworkEndtime,jdbcType=TIMESTAMP},
+      QCWORK_SEQ = #{qcworkSeq,jdbcType=INTEGER},
+      QCWORK_UPDATETIME = #{qcworkUpdatetime,jdbcType=TIMESTAMP},
+      ENDWORK_STATUS = #{endworkStatus,jdbcType=BOOLEAN},
+      ENDWORK_BEGINTIME = #{endworkBegintime,jdbcType=TIMESTAMP},
+      ENDWORK_ENDTIME = #{endworkEndtime,jdbcType=TIMESTAMP},
+      ENDWORK_SEQ = #{endworkSeq,jdbcType=INTEGER},
+      ENDWORK_UPDATETIME = #{endworkUpdatetime,jdbcType=TIMESTAMP},
+      AIRWORK_STATUS = #{airworkStatus,jdbcType=BOOLEAN},
+      AIRWORK_BEGINTIME = #{airworkBegintime,jdbcType=TIMESTAMP},
+      AIRWORK_ENDTIME = #{airworkEndtime,jdbcType=TIMESTAMP},
+      AIRWORK_SEQ = #{airworkSeq,jdbcType=INTEGER},
+      AIRWORK_UPDATETIME = #{airworkUpdatetime,jdbcType=TIMESTAMP}
+    where I_CARS_ID = #{iCarsId,jdbcType=BIGINT}
+  </update>
+</mapper>

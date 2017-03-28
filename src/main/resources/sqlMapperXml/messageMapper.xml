@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.messageMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.message" >
+    <id column="message_id" property="messageId" jdbcType="INTEGER" />
+    <result column="from_member_id" property="fromMemberId" jdbcType="INTEGER" />
+    <result column="to_org_id" property="toOrgId" jdbcType="VARCHAR" />
+    <result column="to_member_id" property="toMemberId" jdbcType="VARCHAR" />
+    <result column="message_title" property="messageTitle" jdbcType="VARCHAR" />
+    <result column="message_body" property="messageBody" jdbcType="VARCHAR" />
+    <result column="message_time" property="messageTime" jdbcType="VARCHAR" />
+    <result column="message_update_time" property="messageUpdateTime" jdbcType="VARCHAR" />
+    <result column="message_open" property="messageOpen" jdbcType="BOOLEAN" />
+    <result column="message_state" property="messageState" jdbcType="BOOLEAN" />
+    <result column="message_type" property="messageType" jdbcType="BOOLEAN" />
+    <result column="read_member_id" property="readMemberId" jdbcType="VARCHAR" />
+    <result column="del_member_id" property="delMemberId" jdbcType="VARCHAR" />
+    <result column="message_ismore" property="messageIsmore" jdbcType="BOOLEAN" />
+    <result column="from_member_name" property="fromMemberName" jdbcType="VARCHAR" />
+    <result column="to_member_name" property="toMemberName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    message_id, from_member_id, to_org_id, to_member_id, message_title, message_body, 
+    message_time, message_update_time, message_open, message_state, message_type, read_member_id, 
+    del_member_id, message_ismore, from_member_name, to_member_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.message" >
+    <selectKey resultType="java.lang.Integer" keyProperty="messageId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into message (from_member_id, to_org_id, to_member_id, 
+      message_title, message_body, message_time, 
+      message_update_time, message_open, message_state, 
+      message_type, read_member_id, del_member_id, 
+      message_ismore, from_member_name, to_member_name
+      )
+    values (#{fromMemberId,jdbcType=INTEGER}, #{toOrgId,jdbcType=VARCHAR}, #{toMemberId,jdbcType=VARCHAR}, 
+      #{messageTitle,jdbcType=VARCHAR}, #{messageBody,jdbcType=VARCHAR}, #{messageTime,jdbcType=VARCHAR}, 
+      #{messageUpdateTime,jdbcType=VARCHAR}, #{messageOpen,jdbcType=BOOLEAN}, #{messageState,jdbcType=BOOLEAN}, 
+      #{messageType,jdbcType=BOOLEAN}, #{readMemberId,jdbcType=VARCHAR}, #{delMemberId,jdbcType=VARCHAR}, 
+      #{messageIsmore,jdbcType=BOOLEAN}, #{fromMemberName,jdbcType=VARCHAR}, #{toMemberName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.message" >
+    <selectKey resultType="java.lang.Integer" keyProperty="messageId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fromMemberId != null" >
+        from_member_id,
+      </if>
+      <if test="toOrgId != null" >
+        to_org_id,
+      </if>
+      <if test="toMemberId != null" >
+        to_member_id,
+      </if>
+      <if test="messageTitle != null" >
+        message_title,
+      </if>
+      <if test="messageBody != null" >
+        message_body,
+      </if>
+      <if test="messageTime != null" >
+        message_time,
+      </if>
+      <if test="messageUpdateTime != null" >
+        message_update_time,
+      </if>
+      <if test="messageOpen != null" >
+        message_open,
+      </if>
+      <if test="messageState != null" >
+        message_state,
+      </if>
+      <if test="messageType != null" >
+        message_type,
+      </if>
+      <if test="readMemberId != null" >
+        read_member_id,
+      </if>
+      <if test="delMemberId != null" >
+        del_member_id,
+      </if>
+      <if test="messageIsmore != null" >
+        message_ismore,
+      </if>
+      <if test="fromMemberName != null" >
+        from_member_name,
+      </if>
+      <if test="toMemberName != null" >
+        to_member_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fromMemberId != null" >
+        #{fromMemberId,jdbcType=INTEGER},
+      </if>
+      <if test="toOrgId != null" >
+        #{toOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="toMemberId != null" >
+        #{toMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTitle != null" >
+        #{messageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="messageBody != null" >
+        #{messageBody,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTime != null" >
+        #{messageTime,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUpdateTime != null" >
+        #{messageUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="messageOpen != null" >
+        #{messageOpen,jdbcType=BOOLEAN},
+      </if>
+      <if test="messageState != null" >
+        #{messageState,jdbcType=BOOLEAN},
+      </if>
+      <if test="messageType != null" >
+        #{messageType,jdbcType=BOOLEAN},
+      </if>
+      <if test="readMemberId != null" >
+        #{readMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="delMemberId != null" >
+        #{delMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageIsmore != null" >
+        #{messageIsmore,jdbcType=BOOLEAN},
+      </if>
+      <if test="fromMemberName != null" >
+        #{fromMemberName,jdbcType=VARCHAR},
+      </if>
+      <if test="toMemberName != null" >
+        #{toMemberName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.message" >
+    update message
+    <set >
+      <if test="fromMemberId != null" >
+        from_member_id = #{fromMemberId,jdbcType=INTEGER},
+      </if>
+      <if test="toOrgId != null" >
+        to_org_id = #{toOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="toMemberId != null" >
+        to_member_id = #{toMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTitle != null" >
+        message_title = #{messageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="messageBody != null" >
+        message_body = #{messageBody,jdbcType=VARCHAR},
+      </if>
+      <if test="messageTime != null" >
+        message_time = #{messageTime,jdbcType=VARCHAR},
+      </if>
+      <if test="messageUpdateTime != null" >
+        message_update_time = #{messageUpdateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="messageOpen != null" >
+        message_open = #{messageOpen,jdbcType=BOOLEAN},
+      </if>
+      <if test="messageState != null" >
+        message_state = #{messageState,jdbcType=BOOLEAN},
+      </if>
+      <if test="messageType != null" >
+        message_type = #{messageType,jdbcType=BOOLEAN},
+      </if>
+      <if test="readMemberId != null" >
+        read_member_id = #{readMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="delMemberId != null" >
+        del_member_id = #{delMemberId,jdbcType=VARCHAR},
+      </if>
+      <if test="messageIsmore != null" >
+        message_ismore = #{messageIsmore,jdbcType=BOOLEAN},
+      </if>
+      <if test="fromMemberName != null" >
+        from_member_name = #{fromMemberName,jdbcType=VARCHAR},
+      </if>
+      <if test="toMemberName != null" >
+        to_member_name = #{toMemberName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.message" >
+    update message
+    set from_member_id = #{fromMemberId,jdbcType=INTEGER},
+      to_org_id = #{toOrgId,jdbcType=VARCHAR},
+      to_member_id = #{toMemberId,jdbcType=VARCHAR},
+      message_title = #{messageTitle,jdbcType=VARCHAR},
+      message_body = #{messageBody,jdbcType=VARCHAR},
+      message_time = #{messageTime,jdbcType=VARCHAR},
+      message_update_time = #{messageUpdateTime,jdbcType=VARCHAR},
+      message_open = #{messageOpen,jdbcType=BOOLEAN},
+      message_state = #{messageState,jdbcType=BOOLEAN},
+      message_type = #{messageType,jdbcType=BOOLEAN},
+      read_member_id = #{readMemberId,jdbcType=VARCHAR},
+      del_member_id = #{delMemberId,jdbcType=VARCHAR},
+      message_ismore = #{messageIsmore,jdbcType=BOOLEAN},
+      from_member_name = #{fromMemberName,jdbcType=VARCHAR},
+      to_member_name = #{toMemberName,jdbcType=VARCHAR}
+    where message_id = #{messageId,jdbcType=INTEGER}
+  </update>
+</mapper>

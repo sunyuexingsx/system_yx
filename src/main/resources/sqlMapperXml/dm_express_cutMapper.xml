@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dm_express_cutMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dm_express_cut" >
+    <id column="I_CUT_ID" property="iCutId" jdbcType="BIGINT" />
+    <result column="I_LINE_ID" property="iLineId" jdbcType="SMALLINT" />
+    <result column="I_CAR_CNT" property="iCarCnt" jdbcType="SMALLINT" />
+    <result column="E_COUP_FLAG" property="eCoupFlag" jdbcType="SMALLINT" />
+    <result column="I_TRACK_ZERO" property="iTrackZero" jdbcType="SMALLINT" />
+    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
+    <result column="C_CAR_ID" property="cCarId" jdbcType="VARCHAR" />
+    <result column="D_START" property="dStart" jdbcType="TIMESTAMP" />
+    <result column="D_END" property="dEnd" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_CUT_ID, I_LINE_ID, I_CAR_CNT, E_COUP_FLAG, I_TRACK_ZERO, C_REMARK, C_CAR_ID, D_START, 
+    D_END
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_express_cut
+    where I_CUT_ID = #{iCutId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dm_express_cut
+    where I_CUT_ID = #{iCutId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dm_express_cut" >
+    <selectKey resultType="java.lang.Long" keyProperty="iCutId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_express_cut (I_LINE_ID, I_CAR_CNT, E_COUP_FLAG, 
+      I_TRACK_ZERO, C_REMARK, C_CAR_ID, 
+      D_START, D_END)
+    values (#{iLineId,jdbcType=SMALLINT}, #{iCarCnt,jdbcType=SMALLINT}, #{eCoupFlag,jdbcType=SMALLINT}, 
+      #{iTrackZero,jdbcType=SMALLINT}, #{cRemark,jdbcType=VARCHAR}, #{cCarId,jdbcType=VARCHAR}, 
+      #{dStart,jdbcType=TIMESTAMP}, #{dEnd,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dm_express_cut" >
+    <selectKey resultType="java.lang.Long" keyProperty="iCutId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_express_cut
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iLineId != null" >
+        I_LINE_ID,
+      </if>
+      <if test="iCarCnt != null" >
+        I_CAR_CNT,
+      </if>
+      <if test="eCoupFlag != null" >
+        E_COUP_FLAG,
+      </if>
+      <if test="iTrackZero != null" >
+        I_TRACK_ZERO,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
+      </if>
+      <if test="cCarId != null" >
+        C_CAR_ID,
+      </if>
+      <if test="dStart != null" >
+        D_START,
+      </if>
+      <if test="dEnd != null" >
+        D_END,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iLineId != null" >
+        #{iLineId,jdbcType=SMALLINT},
+      </if>
+      <if test="iCarCnt != null" >
+        #{iCarCnt,jdbcType=SMALLINT},
+      </if>
+      <if test="eCoupFlag != null" >
+        #{eCoupFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="iTrackZero != null" >
+        #{iTrackZero,jdbcType=SMALLINT},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cCarId != null" >
+        #{cCarId,jdbcType=VARCHAR},
+      </if>
+      <if test="dStart != null" >
+        #{dStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dEnd != null" >
+        #{dEnd,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dm_express_cut" >
+    update dm_express_cut
+    <set >
+      <if test="iLineId != null" >
+        I_LINE_ID = #{iLineId,jdbcType=SMALLINT},
+      </if>
+      <if test="iCarCnt != null" >
+        I_CAR_CNT = #{iCarCnt,jdbcType=SMALLINT},
+      </if>
+      <if test="eCoupFlag != null" >
+        E_COUP_FLAG = #{eCoupFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="iTrackZero != null" >
+        I_TRACK_ZERO = #{iTrackZero,jdbcType=SMALLINT},
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="cCarId != null" >
+        C_CAR_ID = #{cCarId,jdbcType=VARCHAR},
+      </if>
+      <if test="dStart != null" >
+        D_START = #{dStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dEnd != null" >
+        D_END = #{dEnd,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where I_CUT_ID = #{iCutId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dm_express_cut" >
+    update dm_express_cut
+    set I_LINE_ID = #{iLineId,jdbcType=SMALLINT},
+      I_CAR_CNT = #{iCarCnt,jdbcType=SMALLINT},
+      E_COUP_FLAG = #{eCoupFlag,jdbcType=SMALLINT},
+      I_TRACK_ZERO = #{iTrackZero,jdbcType=SMALLINT},
+      C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      C_CAR_ID = #{cCarId,jdbcType=VARCHAR},
+      D_START = #{dStart,jdbcType=TIMESTAMP},
+      D_END = #{dEnd,jdbcType=TIMESTAMP}
+    where I_CUT_ID = #{iCutId,jdbcType=BIGINT}
+  </update>
+</mapper>

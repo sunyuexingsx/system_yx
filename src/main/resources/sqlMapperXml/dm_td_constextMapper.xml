@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dm_td_constextMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dm_td_constext" >
+    <id column="I_CAR_ID" property="iCarId" jdbcType="BIGINT" />
+    <result column="I_VERSION_NO" property="iVersionNo" jdbcType="INTEGER" />
+    <result column="C_CAR_CO" property="cCarCo" jdbcType="VARCHAR" />
+    <result column="I_CONS_ID_ARR" property="iConsIdArr" jdbcType="BIGINT" />
+    <result column="I_CONS_ID_DEP" property="iConsIdDep" jdbcType="BIGINT" />
+    <result column="I_CONS_NO_ARR" property="iConsNoArr" jdbcType="INTEGER" />
+    <result column="I_CONS_NO_DEP" property="iConsNoDep" jdbcType="INTEGER" />
+    <result column="C_SUIT_TYPE" property="cSuitType" jdbcType="VARCHAR" />
+    <result column="C_CAR_TYPE" property="cCarType" jdbcType="VARCHAR" />
+    <result column="C_CAR_TYPE_FORSH" property="cCarTypeForsh" jdbcType="VARCHAR" />
+    <result column="E_CAR_TYPE" property="eCarType" jdbcType="INTEGER" />
+    <result column="E_OIL_TYPE" property="eOilType" jdbcType="INTEGER" />
+    <result column="F_WEGH_OWN" property="fWeghOwn" jdbcType="DECIMAL" />
+    <result column="F_LEN" property="fLen" jdbcType="DECIMAL" />
+    <result column="F_WEGH_LOAD" property="fWeghLoad" jdbcType="DECIMAL" />
+    <result column="C_STA_CO_ARR" property="cStaCoArr" jdbcType="VARCHAR" />
+    <result column="C_STA_NA_ARR" property="cStaNaArr" jdbcType="VARCHAR" />
+    <result column="C_BUR_CO_ARR" property="cBurCoArr" jdbcType="VARCHAR" />
+    <result column="I_SBUR_CO_ARR" property="iSburCoArr" jdbcType="INTEGER" />
+    <result column="C_STA_CO_END" property="cStaCoEnd" jdbcType="VARCHAR" />
+    <result column="C_STA_NA_END" property="cStaNaEnd" jdbcType="VARCHAR" />
+    <result column="C_GOODS_NA" property="cGoodsNa" jdbcType="VARCHAR" />
+    <result column="C_CONSIGNEE" property="cConsignee" jdbcType="VARCHAR" />
+    <result column="C_STA_CO_DEP" property="cStaCoDep" jdbcType="VARCHAR" />
+    <result column="C_STA_NA_DEP" property="cStaNaDep" jdbcType="VARCHAR" />
+    <result column="I_CANVAS_NUM" property="iCanvasNum" jdbcType="INTEGER" />
+    <result column="E_SYM_BADCAR" property="eSymBadcar" jdbcType="INTEGER" />
+    <result column="C_REMARK" property="cRemark" jdbcType="VARCHAR" />
+    <result column="E_SYM_GRO" property="eSymGro" jdbcType="INTEGER" />
+    <result column="E_SYM_WEGH" property="eSymWegh" jdbcType="INTEGER" />
+    <result column="E_SYM_LCL" property="eSymLcl" jdbcType="INTEGER" />
+    <result column="E_SYM_ARMY" property="eSymArmy" jdbcType="INTEGER" />
+    <result column="E_SYM_ECHO" property="eSymEcho" jdbcType="INTEGER" />
+    <result column="E_SYM_ENTERPRISE" property="eSymEnterprise" jdbcType="INTEGER" />
+    <result column="E_SYM_OUTSERV" property="eSymOutserv" jdbcType="INTEGER" />
+    <result column="E_SYM_OTHER" property="eSymOther" jdbcType="INTEGER" />
+    <result column="E_OUTSERV_CO" property="eOutservCo" jdbcType="INTEGER" />
+    <result column="C_SEAL_ID" property="cSealId" jdbcType="VARCHAR" />
+    <result column="C_CANVAS_ID" property="cCanvasId" jdbcType="VARCHAR" />
+    <result column="I_GRO_ID" property="iGroId" jdbcType="INTEGER" />
+    <result column="I_LINE_ID" property="iLineId" jdbcType="INTEGER" />
+    <result column="C_LINE_NA" property="cLineNa" jdbcType="VARCHAR" />
+    <result column="B_CAR_CHARA" property="bCarChara" jdbcType="BIGINT" />
+    <result column="E_CAR_CHARA" property="eCarChara" jdbcType="INTEGER" />
+    <result column="C_TRA_NUM_ARR" property="cTraNumArr" jdbcType="VARCHAR" />
+    <result column="D_TRA_ARR" property="dTraArr" jdbcType="TIMESTAMP" />
+    <result column="C_INV_CO" property="cInvCo" jdbcType="VARCHAR" />
+    <result column="C_CANVAS_ID1" property="cCanvasId1" jdbcType="VARCHAR" />
+    <result column="C_CANVAS_ID2" property="cCanvasId2" jdbcType="VARCHAR" />
+    <result column="I_GRO_ID_STAT" property="iGroIdStat" jdbcType="INTEGER" />
+    <result column="C_CONSIGNOR" property="cConsignor" jdbcType="VARCHAR" />
+    <result column="B_CAR_STATE" property="bCarState" jdbcType="BIGINT" />
+    <result column="D_LINE_IN" property="dLineIn" jdbcType="TIMESTAMP" />
+    <result column="I_GOODS_NUM" property="iGoodsNum" jdbcType="INTEGER" />
+    <result column="D_WORK" property="dWork" jdbcType="TIMESTAMP" />
+    <result column="D_WORK_BEGIN" property="dWorkBegin" jdbcType="TIMESTAMP" />
+    <result column="D_LINE_OUT" property="dLineOut" jdbcType="TIMESTAMP" />
+    <result column="F_RATEKMS_UNLOAD" property="fRatekmsUnload" jdbcType="DECIMAL" />
+    <result column="F_RATEKMS_LOAD" property="fRatekmsLoad" jdbcType="DECIMAL" />
+    <result column="I_LIMIT_SPEED" property="iLimitSpeed" jdbcType="SMALLINT" />
+    <result column="C_STA_CO_ROUTE_COMP" property="cStaCoRouteComp" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_CAR_ID, I_VERSION_NO, C_CAR_CO, I_CONS_ID_ARR, I_CONS_ID_DEP, I_CONS_NO_ARR, I_CONS_NO_DEP, 
+    C_SUIT_TYPE, C_CAR_TYPE, C_CAR_TYPE_FORSH, E_CAR_TYPE, E_OIL_TYPE, F_WEGH_OWN, F_LEN, 
+    F_WEGH_LOAD, C_STA_CO_ARR, C_STA_NA_ARR, C_BUR_CO_ARR, I_SBUR_CO_ARR, C_STA_CO_END, 
+    C_STA_NA_END, C_GOODS_NA, C_CONSIGNEE, C_STA_CO_DEP, C_STA_NA_DEP, I_CANVAS_NUM, 
+    E_SYM_BADCAR, C_REMARK, E_SYM_GRO, E_SYM_WEGH, E_SYM_LCL, E_SYM_ARMY, E_SYM_ECHO, 
+    E_SYM_ENTERPRISE, E_SYM_OUTSERV, E_SYM_OTHER, E_OUTSERV_CO, C_SEAL_ID, C_CANVAS_ID, 
+    I_GRO_ID, I_LINE_ID, C_LINE_NA, B_CAR_CHARA, E_CAR_CHARA, C_TRA_NUM_ARR, D_TRA_ARR, 
+    C_INV_CO, C_CANVAS_ID1, C_CANVAS_ID2, I_GRO_ID_STAT, C_CONSIGNOR, B_CAR_STATE, D_LINE_IN, 
+    I_GOODS_NUM, D_WORK, D_WORK_BEGIN, D_LINE_OUT, F_RATEKMS_UNLOAD, F_RATEKMS_LOAD, 
+    I_LIMIT_SPEED, C_STA_CO_ROUTE_COMP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_td_constext
+    where I_CAR_ID = #{iCarId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dm_td_constext
+    where I_CAR_ID = #{iCarId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dm_td_constext" >
+    <selectKey resultType="java.lang.Long" keyProperty="iCarId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_td_constext (I_VERSION_NO, C_CAR_CO, I_CONS_ID_ARR, 
+      I_CONS_ID_DEP, I_CONS_NO_ARR, I_CONS_NO_DEP, 
+      C_SUIT_TYPE, C_CAR_TYPE, C_CAR_TYPE_FORSH, 
+      E_CAR_TYPE, E_OIL_TYPE, F_WEGH_OWN, 
+      F_LEN, F_WEGH_LOAD, C_STA_CO_ARR, 
+      C_STA_NA_ARR, C_BUR_CO_ARR, I_SBUR_CO_ARR, 
+      C_STA_CO_END, C_STA_NA_END, C_GOODS_NA, 
+      C_CONSIGNEE, C_STA_CO_DEP, C_STA_NA_DEP, 
+      I_CANVAS_NUM, E_SYM_BADCAR, C_REMARK, 
+      E_SYM_GRO, E_SYM_WEGH, E_SYM_LCL, 
+      E_SYM_ARMY, E_SYM_ECHO, E_SYM_ENTERPRISE, 
+      E_SYM_OUTSERV, E_SYM_OTHER, E_OUTSERV_CO, 
+      C_SEAL_ID, C_CANVAS_ID, I_GRO_ID, 
+      I_LINE_ID, C_LINE_NA, B_CAR_CHARA, 
+      E_CAR_CHARA, C_TRA_NUM_ARR, D_TRA_ARR, 
+      C_INV_CO, C_CANVAS_ID1, C_CANVAS_ID2, 
+      I_GRO_ID_STAT, C_CONSIGNOR, B_CAR_STATE, 
+      D_LINE_IN, I_GOODS_NUM, D_WORK, 
+      D_WORK_BEGIN, D_LINE_OUT, F_RATEKMS_UNLOAD, 
+      F_RATEKMS_LOAD, I_LIMIT_SPEED, C_STA_CO_ROUTE_COMP
+      )
+    values (#{iVersionNo,jdbcType=INTEGER}, #{cCarCo,jdbcType=VARCHAR}, #{iConsIdArr,jdbcType=BIGINT}, 
+      #{iConsIdDep,jdbcType=BIGINT}, #{iConsNoArr,jdbcType=INTEGER}, #{iConsNoDep,jdbcType=INTEGER}, 
+      #{cSuitType,jdbcType=VARCHAR}, #{cCarType,jdbcType=VARCHAR}, #{cCarTypeForsh,jdbcType=VARCHAR}, 
+      #{eCarType,jdbcType=INTEGER}, #{eOilType,jdbcType=INTEGER}, #{fWeghOwn,jdbcType=DECIMAL}, 
+      #{fLen,jdbcType=DECIMAL}, #{fWeghLoad,jdbcType=DECIMAL}, #{cStaCoArr,jdbcType=VARCHAR}, 
+      #{cStaNaArr,jdbcType=VARCHAR}, #{cBurCoArr,jdbcType=VARCHAR}, #{iSburCoArr,jdbcType=INTEGER}, 
+      #{cStaCoEnd,jdbcType=VARCHAR}, #{cStaNaEnd,jdbcType=VARCHAR}, #{cGoodsNa,jdbcType=VARCHAR}, 
+      #{cConsignee,jdbcType=VARCHAR}, #{cStaCoDep,jdbcType=VARCHAR}, #{cStaNaDep,jdbcType=VARCHAR}, 
+      #{iCanvasNum,jdbcType=INTEGER}, #{eSymBadcar,jdbcType=INTEGER}, #{cRemark,jdbcType=VARCHAR}, 
+      #{eSymGro,jdbcType=INTEGER}, #{eSymWegh,jdbcType=INTEGER}, #{eSymLcl,jdbcType=INTEGER}, 
+      #{eSymArmy,jdbcType=INTEGER}, #{eSymEcho,jdbcType=INTEGER}, #{eSymEnterprise,jdbcType=INTEGER}, 
+      #{eSymOutserv,jdbcType=INTEGER}, #{eSymOther,jdbcType=INTEGER}, #{eOutservCo,jdbcType=INTEGER}, 
+      #{cSealId,jdbcType=VARCHAR}, #{cCanvasId,jdbcType=VARCHAR}, #{iGroId,jdbcType=INTEGER}, 
+      #{iLineId,jdbcType=INTEGER}, #{cLineNa,jdbcType=VARCHAR}, #{bCarChara,jdbcType=BIGINT}, 
+      #{eCarChara,jdbcType=INTEGER}, #{cTraNumArr,jdbcType=VARCHAR}, #{dTraArr,jdbcType=TIMESTAMP}, 
+      #{cInvCo,jdbcType=VARCHAR}, #{cCanvasId1,jdbcType=VARCHAR}, #{cCanvasId2,jdbcType=VARCHAR}, 
+      #{iGroIdStat,jdbcType=INTEGER}, #{cConsignor,jdbcType=VARCHAR}, #{bCarState,jdbcType=BIGINT}, 
+      #{dLineIn,jdbcType=TIMESTAMP}, #{iGoodsNum,jdbcType=INTEGER}, #{dWork,jdbcType=TIMESTAMP}, 
+      #{dWorkBegin,jdbcType=TIMESTAMP}, #{dLineOut,jdbcType=TIMESTAMP}, #{fRatekmsUnload,jdbcType=DECIMAL}, 
+      #{fRatekmsLoad,jdbcType=DECIMAL}, #{iLimitSpeed,jdbcType=SMALLINT}, #{cStaCoRouteComp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dm_td_constext" >
+    <selectKey resultType="java.lang.Long" keyProperty="iCarId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_td_constext
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iVersionNo != null" >
+        I_VERSION_NO,
+      </if>
+      <if test="cCarCo != null" >
+        C_CAR_CO,
+      </if>
+      <if test="iConsIdArr != null" >
+        I_CONS_ID_ARR,
+      </if>
+      <if test="iConsIdDep != null" >
+        I_CONS_ID_DEP,
+      </if>
+      <if test="iConsNoArr != null" >
+        I_CONS_NO_ARR,
+      </if>
+      <if test="iConsNoDep != null" >
+        I_CONS_NO_DEP,
+      </if>
+      <if test="cSuitType != null" >
+        C_SUIT_TYPE,
+      </if>
+      <if test="cCarType != null" >
+        C_CAR_TYPE,
+      </if>
+      <if test="cCarTypeForsh != null" >
+        C_CAR_TYPE_FORSH,
+      </if>
+      <if test="eCarType != null" >
+        E_CAR_TYPE,
+      </if>
+      <if test="eOilType != null" >
+        E_OIL_TYPE,
+      </if>
+      <if test="fWeghOwn != null" >
+        F_WEGH_OWN,
+      </if>
+      <if test="fLen != null" >
+        F_LEN,
+      </if>
+      <if test="fWeghLoad != null" >
+        F_WEGH_LOAD,
+      </if>
+      <if test="cStaCoArr != null" >
+        C_STA_CO_ARR,
+      </if>
+      <if test="cStaNaArr != null" >
+        C_STA_NA_ARR,
+      </if>
+      <if test="cBurCoArr != null" >
+        C_BUR_CO_ARR,
+      </if>
+      <if test="iSburCoArr != null" >
+        I_SBUR_CO_ARR,
+      </if>
+      <if test="cStaCoEnd != null" >
+        C_STA_CO_END,
+      </if>
+      <if test="cStaNaEnd != null" >
+        C_STA_NA_END,
+      </if>
+      <if test="cGoodsNa != null" >
+        C_GOODS_NA,
+      </if>
+      <if test="cConsignee != null" >
+        C_CONSIGNEE,
+      </if>
+      <if test="cStaCoDep != null" >
+        C_STA_CO_DEP,
+      </if>
+      <if test="cStaNaDep != null" >
+        C_STA_NA_DEP,
+      </if>
+      <if test="iCanvasNum != null" >
+        I_CANVAS_NUM,
+      </if>
+      <if test="eSymBadcar != null" >
+        E_SYM_BADCAR,
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK,
+      </if>
+      <if test="eSymGro != null" >
+        E_SYM_GRO,
+      </if>
+      <if test="eSymWegh != null" >
+        E_SYM_WEGH,
+      </if>
+      <if test="eSymLcl != null" >
+        E_SYM_LCL,
+      </if>
+      <if test="eSymArmy != null" >
+        E_SYM_ARMY,
+      </if>
+      <if test="eSymEcho != null" >
+        E_SYM_ECHO,
+      </if>
+      <if test="eSymEnterprise != null" >
+        E_SYM_ENTERPRISE,
+      </if>
+      <if test="eSymOutserv != null" >
+        E_SYM_OUTSERV,
+      </if>
+      <if test="eSymOther != null" >
+        E_SYM_OTHER,
+      </if>
+      <if test="eOutservCo != null" >
+        E_OUTSERV_CO,
+      </if>
+      <if test="cSealId != null" >
+        C_SEAL_ID,
+      </if>
+      <if test="cCanvasId != null" >
+        C_CANVAS_ID,
+      </if>
+      <if test="iGroId != null" >
+        I_GRO_ID,
+      </if>
+      <if test="iLineId != null" >
+        I_LINE_ID,
+      </if>
+      <if test="cLineNa != null" >
+        C_LINE_NA,
+      </if>
+      <if test="bCarChara != null" >
+        B_CAR_CHARA,
+      </if>
+      <if test="eCarChara != null" >
+        E_CAR_CHARA,
+      </if>
+      <if test="cTraNumArr != null" >
+        C_TRA_NUM_ARR,
+      </if>
+      <if test="dTraArr != null" >
+        D_TRA_ARR,
+      </if>
+      <if test="cInvCo != null" >
+        C_INV_CO,
+      </if>
+      <if test="cCanvasId1 != null" >
+        C_CANVAS_ID1,
+      </if>
+      <if test="cCanvasId2 != null" >
+        C_CANVAS_ID2,
+      </if>
+      <if test="iGroIdStat != null" >
+        I_GRO_ID_STAT,
+      </if>
+      <if test="cConsignor != null" >
+        C_CONSIGNOR,
+      </if>
+      <if test="bCarState != null" >
+        B_CAR_STATE,
+      </if>
+      <if test="dLineIn != null" >
+        D_LINE_IN,
+      </if>
+      <if test="iGoodsNum != null" >
+        I_GOODS_NUM,
+      </if>
+      <if test="dWork != null" >
+        D_WORK,
+      </if>
+      <if test="dWorkBegin != null" >
+        D_WORK_BEGIN,
+      </if>
+      <if test="dLineOut != null" >
+        D_LINE_OUT,
+      </if>
+      <if test="fRatekmsUnload != null" >
+        F_RATEKMS_UNLOAD,
+      </if>
+      <if test="fRatekmsLoad != null" >
+        F_RATEKMS_LOAD,
+      </if>
+      <if test="iLimitSpeed != null" >
+        I_LIMIT_SPEED,
+      </if>
+      <if test="cStaCoRouteComp != null" >
+        C_STA_CO_ROUTE_COMP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iVersionNo != null" >
+        #{iVersionNo,jdbcType=INTEGER},
+      </if>
+      <if test="cCarCo != null" >
+        #{cCarCo,jdbcType=VARCHAR},
+      </if>
+      <if test="iConsIdArr != null" >
+        #{iConsIdArr,jdbcType=BIGINT},
+      </if>
+      <if test="iConsIdDep != null" >
+        #{iConsIdDep,jdbcType=BIGINT},
+      </if>
+      <if test="iConsNoArr != null" >
+        #{iConsNoArr,jdbcType=INTEGER},
+      </if>
+      <if test="iConsNoDep != null" >
+        #{iConsNoDep,jdbcType=INTEGER},
+      </if>
+      <if test="cSuitType != null" >
+        #{cSuitType,jdbcType=VARCHAR},
+      </if>
+      <if test="cCarType != null" >
+        #{cCarType,jdbcType=VARCHAR},
+      </if>
+      <if test="cCarTypeForsh != null" >
+        #{cCarTypeForsh,jdbcType=VARCHAR},
+      </if>
+      <if test="eCarType != null" >
+        #{eCarType,jdbcType=INTEGER},
+      </if>
+      <if test="eOilType != null" >
+        #{eOilType,jdbcType=INTEGER},
+      </if>
+      <if test="fWeghOwn != null" >
+        #{fWeghOwn,jdbcType=DECIMAL},
+      </if>
+      <if test="fLen != null" >
+        #{fLen,jdbcType=DECIMAL},
+      </if>
+      <if test="fWeghLoad != null" >
+        #{fWeghLoad,jdbcType=DECIMAL},
+      </if>
+      <if test="cStaCoArr != null" >
+        #{cStaCoArr,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaNaArr != null" >
+        #{cStaNaArr,jdbcType=VARCHAR},
+      </if>
+      <if test="cBurCoArr != null" >
+        #{cBurCoArr,jdbcType=VARCHAR},
+      </if>
+      <if test="iSburCoArr != null" >
+        #{iSburCoArr,jdbcType=INTEGER},
+      </if>
+      <if test="cStaCoEnd != null" >
+        #{cStaCoEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaNaEnd != null" >
+        #{cStaNaEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="cGoodsNa != null" >
+        #{cGoodsNa,jdbcType=VARCHAR},
+      </if>
+      <if test="cConsignee != null" >
+        #{cConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaCoDep != null" >
+        #{cStaCoDep,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaNaDep != null" >
+        #{cStaNaDep,jdbcType=VARCHAR},
+      </if>
+      <if test="iCanvasNum != null" >
+        #{iCanvasNum,jdbcType=INTEGER},
+      </if>
+      <if test="eSymBadcar != null" >
+        #{eSymBadcar,jdbcType=INTEGER},
+      </if>
+      <if test="cRemark != null" >
+        #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="eSymGro != null" >
+        #{eSymGro,jdbcType=INTEGER},
+      </if>
+      <if test="eSymWegh != null" >
+        #{eSymWegh,jdbcType=INTEGER},
+      </if>
+      <if test="eSymLcl != null" >
+        #{eSymLcl,jdbcType=INTEGER},
+      </if>
+      <if test="eSymArmy != null" >
+        #{eSymArmy,jdbcType=INTEGER},
+      </if>
+      <if test="eSymEcho != null" >
+        #{eSymEcho,jdbcType=INTEGER},
+      </if>
+      <if test="eSymEnterprise != null" >
+        #{eSymEnterprise,jdbcType=INTEGER},
+      </if>
+      <if test="eSymOutserv != null" >
+        #{eSymOutserv,jdbcType=INTEGER},
+      </if>
+      <if test="eSymOther != null" >
+        #{eSymOther,jdbcType=INTEGER},
+      </if>
+      <if test="eOutservCo != null" >
+        #{eOutservCo,jdbcType=INTEGER},
+      </if>
+      <if test="cSealId != null" >
+        #{cSealId,jdbcType=VARCHAR},
+      </if>
+      <if test="cCanvasId != null" >
+        #{cCanvasId,jdbcType=VARCHAR},
+      </if>
+      <if test="iGroId != null" >
+        #{iGroId,jdbcType=INTEGER},
+      </if>
+      <if test="iLineId != null" >
+        #{iLineId,jdbcType=INTEGER},
+      </if>
+      <if test="cLineNa != null" >
+        #{cLineNa,jdbcType=VARCHAR},
+      </if>
+      <if test="bCarChara != null" >
+        #{bCarChara,jdbcType=BIGINT},
+      </if>
+      <if test="eCarChara != null" >
+        #{eCarChara,jdbcType=INTEGER},
+      </if>
+      <if test="cTraNumArr != null" >
+        #{cTraNumArr,jdbcType=VARCHAR},
+      </if>
+      <if test="dTraArr != null" >
+        #{dTraArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cInvCo != null" >
+        #{cInvCo,jdbcType=VARCHAR},
+      </if>
+      <if test="cCanvasId1 != null" >
+        #{cCanvasId1,jdbcType=VARCHAR},
+      </if>
+      <if test="cCanvasId2 != null" >
+        #{cCanvasId2,jdbcType=VARCHAR},
+      </if>
+      <if test="iGroIdStat != null" >
+        #{iGroIdStat,jdbcType=INTEGER},
+      </if>
+      <if test="cConsignor != null" >
+        #{cConsignor,jdbcType=VARCHAR},
+      </if>
+      <if test="bCarState != null" >
+        #{bCarState,jdbcType=BIGINT},
+      </if>
+      <if test="dLineIn != null" >
+        #{dLineIn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iGoodsNum != null" >
+        #{iGoodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="dWork != null" >
+        #{dWork,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dWorkBegin != null" >
+        #{dWorkBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dLineOut != null" >
+        #{dLineOut,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fRatekmsUnload != null" >
+        #{fRatekmsUnload,jdbcType=DECIMAL},
+      </if>
+      <if test="fRatekmsLoad != null" >
+        #{fRatekmsLoad,jdbcType=DECIMAL},
+      </if>
+      <if test="iLimitSpeed != null" >
+        #{iLimitSpeed,jdbcType=SMALLINT},
+      </if>
+      <if test="cStaCoRouteComp != null" >
+        #{cStaCoRouteComp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dm_td_constext" >
+    update dm_td_constext
+    <set >
+      <if test="iVersionNo != null" >
+        I_VERSION_NO = #{iVersionNo,jdbcType=INTEGER},
+      </if>
+      <if test="cCarCo != null" >
+        C_CAR_CO = #{cCarCo,jdbcType=VARCHAR},
+      </if>
+      <if test="iConsIdArr != null" >
+        I_CONS_ID_ARR = #{iConsIdArr,jdbcType=BIGINT},
+      </if>
+      <if test="iConsIdDep != null" >
+        I_CONS_ID_DEP = #{iConsIdDep,jdbcType=BIGINT},
+      </if>
+      <if test="iConsNoArr != null" >
+        I_CONS_NO_ARR = #{iConsNoArr,jdbcType=INTEGER},
+      </if>
+      <if test="iConsNoDep != null" >
+        I_CONS_NO_DEP = #{iConsNoDep,jdbcType=INTEGER},
+      </if>
+      <if test="cSuitType != null" >
+        C_SUIT_TYPE = #{cSuitType,jdbcType=VARCHAR},
+      </if>
+      <if test="cCarType != null" >
+        C_CAR_TYPE = #{cCarType,jdbcType=VARCHAR},
+      </if>
+      <if test="cCarTypeForsh != null" >
+        C_CAR_TYPE_FORSH = #{cCarTypeForsh,jdbcType=VARCHAR},
+      </if>
+      <if test="eCarType != null" >
+        E_CAR_TYPE = #{eCarType,jdbcType=INTEGER},
+      </if>
+      <if test="eOilType != null" >
+        E_OIL_TYPE = #{eOilType,jdbcType=INTEGER},
+      </if>
+      <if test="fWeghOwn != null" >
+        F_WEGH_OWN = #{fWeghOwn,jdbcType=DECIMAL},
+      </if>
+      <if test="fLen != null" >
+        F_LEN = #{fLen,jdbcType=DECIMAL},
+      </if>
+      <if test="fWeghLoad != null" >
+        F_WEGH_LOAD = #{fWeghLoad,jdbcType=DECIMAL},
+      </if>
+      <if test="cStaCoArr != null" >
+        C_STA_CO_ARR = #{cStaCoArr,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaNaArr != null" >
+        C_STA_NA_ARR = #{cStaNaArr,jdbcType=VARCHAR},
+      </if>
+      <if test="cBurCoArr != null" >
+        C_BUR_CO_ARR = #{cBurCoArr,jdbcType=VARCHAR},
+      </if>
+      <if test="iSburCoArr != null" >
+        I_SBUR_CO_ARR = #{iSburCoArr,jdbcType=INTEGER},
+      </if>
+      <if test="cStaCoEnd != null" >
+        C_STA_CO_END = #{cStaCoEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaNaEnd != null" >
+        C_STA_NA_END = #{cStaNaEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="cGoodsNa != null" >
+        C_GOODS_NA = #{cGoodsNa,jdbcType=VARCHAR},
+      </if>
+      <if test="cConsignee != null" >
+        C_CONSIGNEE = #{cConsignee,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaCoDep != null" >
+        C_STA_CO_DEP = #{cStaCoDep,jdbcType=VARCHAR},
+      </if>
+      <if test="cStaNaDep != null" >
+        C_STA_NA_DEP = #{cStaNaDep,jdbcType=VARCHAR},
+      </if>
+      <if test="iCanvasNum != null" >
+        I_CANVAS_NUM = #{iCanvasNum,jdbcType=INTEGER},
+      </if>
+      <if test="eSymBadcar != null" >
+        E_SYM_BADCAR = #{eSymBadcar,jdbcType=INTEGER},
+      </if>
+      <if test="cRemark != null" >
+        C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="eSymGro != null" >
+        E_SYM_GRO = #{eSymGro,jdbcType=INTEGER},
+      </if>
+      <if test="eSymWegh != null" >
+        E_SYM_WEGH = #{eSymWegh,jdbcType=INTEGER},
+      </if>
+      <if test="eSymLcl != null" >
+        E_SYM_LCL = #{eSymLcl,jdbcType=INTEGER},
+      </if>
+      <if test="eSymArmy != null" >
+        E_SYM_ARMY = #{eSymArmy,jdbcType=INTEGER},
+      </if>
+      <if test="eSymEcho != null" >
+        E_SYM_ECHO = #{eSymEcho,jdbcType=INTEGER},
+      </if>
+      <if test="eSymEnterprise != null" >
+        E_SYM_ENTERPRISE = #{eSymEnterprise,jdbcType=INTEGER},
+      </if>
+      <if test="eSymOutserv != null" >
+        E_SYM_OUTSERV = #{eSymOutserv,jdbcType=INTEGER},
+      </if>
+      <if test="eSymOther != null" >
+        E_SYM_OTHER = #{eSymOther,jdbcType=INTEGER},
+      </if>
+      <if test="eOutservCo != null" >
+        E_OUTSERV_CO = #{eOutservCo,jdbcType=INTEGER},
+      </if>
+      <if test="cSealId != null" >
+        C_SEAL_ID = #{cSealId,jdbcType=VARCHAR},
+      </if>
+      <if test="cCanvasId != null" >
+        C_CANVAS_ID = #{cCanvasId,jdbcType=VARCHAR},
+      </if>
+      <if test="iGroId != null" >
+        I_GRO_ID = #{iGroId,jdbcType=INTEGER},
+      </if>
+      <if test="iLineId != null" >
+        I_LINE_ID = #{iLineId,jdbcType=INTEGER},
+      </if>
+      <if test="cLineNa != null" >
+        C_LINE_NA = #{cLineNa,jdbcType=VARCHAR},
+      </if>
+      <if test="bCarChara != null" >
+        B_CAR_CHARA = #{bCarChara,jdbcType=BIGINT},
+      </if>
+      <if test="eCarChara != null" >
+        E_CAR_CHARA = #{eCarChara,jdbcType=INTEGER},
+      </if>
+      <if test="cTraNumArr != null" >
+        C_TRA_NUM_ARR = #{cTraNumArr,jdbcType=VARCHAR},
+      </if>
+      <if test="dTraArr != null" >
+        D_TRA_ARR = #{dTraArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cInvCo != null" >
+        C_INV_CO = #{cInvCo,jdbcType=VARCHAR},
+      </if>
+      <if test="cCanvasId1 != null" >
+        C_CANVAS_ID1 = #{cCanvasId1,jdbcType=VARCHAR},
+      </if>
+      <if test="cCanvasId2 != null" >
+        C_CANVAS_ID2 = #{cCanvasId2,jdbcType=VARCHAR},
+      </if>
+      <if test="iGroIdStat != null" >
+        I_GRO_ID_STAT = #{iGroIdStat,jdbcType=INTEGER},
+      </if>
+      <if test="cConsignor != null" >
+        C_CONSIGNOR = #{cConsignor,jdbcType=VARCHAR},
+      </if>
+      <if test="bCarState != null" >
+        B_CAR_STATE = #{bCarState,jdbcType=BIGINT},
+      </if>
+      <if test="dLineIn != null" >
+        D_LINE_IN = #{dLineIn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iGoodsNum != null" >
+        I_GOODS_NUM = #{iGoodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="dWork != null" >
+        D_WORK = #{dWork,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dWorkBegin != null" >
+        D_WORK_BEGIN = #{dWorkBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dLineOut != null" >
+        D_LINE_OUT = #{dLineOut,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fRatekmsUnload != null" >
+        F_RATEKMS_UNLOAD = #{fRatekmsUnload,jdbcType=DECIMAL},
+      </if>
+      <if test="fRatekmsLoad != null" >
+        F_RATEKMS_LOAD = #{fRatekmsLoad,jdbcType=DECIMAL},
+      </if>
+      <if test="iLimitSpeed != null" >
+        I_LIMIT_SPEED = #{iLimitSpeed,jdbcType=SMALLINT},
+      </if>
+      <if test="cStaCoRouteComp != null" >
+        C_STA_CO_ROUTE_COMP = #{cStaCoRouteComp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where I_CAR_ID = #{iCarId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dm_td_constext" >
+    update dm_td_constext
+    set I_VERSION_NO = #{iVersionNo,jdbcType=INTEGER},
+      C_CAR_CO = #{cCarCo,jdbcType=VARCHAR},
+      I_CONS_ID_ARR = #{iConsIdArr,jdbcType=BIGINT},
+      I_CONS_ID_DEP = #{iConsIdDep,jdbcType=BIGINT},
+      I_CONS_NO_ARR = #{iConsNoArr,jdbcType=INTEGER},
+      I_CONS_NO_DEP = #{iConsNoDep,jdbcType=INTEGER},
+      C_SUIT_TYPE = #{cSuitType,jdbcType=VARCHAR},
+      C_CAR_TYPE = #{cCarType,jdbcType=VARCHAR},
+      C_CAR_TYPE_FORSH = #{cCarTypeForsh,jdbcType=VARCHAR},
+      E_CAR_TYPE = #{eCarType,jdbcType=INTEGER},
+      E_OIL_TYPE = #{eOilType,jdbcType=INTEGER},
+      F_WEGH_OWN = #{fWeghOwn,jdbcType=DECIMAL},
+      F_LEN = #{fLen,jdbcType=DECIMAL},
+      F_WEGH_LOAD = #{fWeghLoad,jdbcType=DECIMAL},
+      C_STA_CO_ARR = #{cStaCoArr,jdbcType=VARCHAR},
+      C_STA_NA_ARR = #{cStaNaArr,jdbcType=VARCHAR},
+      C_BUR_CO_ARR = #{cBurCoArr,jdbcType=VARCHAR},
+      I_SBUR_CO_ARR = #{iSburCoArr,jdbcType=INTEGER},
+      C_STA_CO_END = #{cStaCoEnd,jdbcType=VARCHAR},
+      C_STA_NA_END = #{cStaNaEnd,jdbcType=VARCHAR},
+      C_GOODS_NA = #{cGoodsNa,jdbcType=VARCHAR},
+      C_CONSIGNEE = #{cConsignee,jdbcType=VARCHAR},
+      C_STA_CO_DEP = #{cStaCoDep,jdbcType=VARCHAR},
+      C_STA_NA_DEP = #{cStaNaDep,jdbcType=VARCHAR},
+      I_CANVAS_NUM = #{iCanvasNum,jdbcType=INTEGER},
+      E_SYM_BADCAR = #{eSymBadcar,jdbcType=INTEGER},
+      C_REMARK = #{cRemark,jdbcType=VARCHAR},
+      E_SYM_GRO = #{eSymGro,jdbcType=INTEGER},
+      E_SYM_WEGH = #{eSymWegh,jdbcType=INTEGER},
+      E_SYM_LCL = #{eSymLcl,jdbcType=INTEGER},
+      E_SYM_ARMY = #{eSymArmy,jdbcType=INTEGER},
+      E_SYM_ECHO = #{eSymEcho,jdbcType=INTEGER},
+      E_SYM_ENTERPRISE = #{eSymEnterprise,jdbcType=INTEGER},
+      E_SYM_OUTSERV = #{eSymOutserv,jdbcType=INTEGER},
+      E_SYM_OTHER = #{eSymOther,jdbcType=INTEGER},
+      E_OUTSERV_CO = #{eOutservCo,jdbcType=INTEGER},
+      C_SEAL_ID = #{cSealId,jdbcType=VARCHAR},
+      C_CANVAS_ID = #{cCanvasId,jdbcType=VARCHAR},
+      I_GRO_ID = #{iGroId,jdbcType=INTEGER},
+      I_LINE_ID = #{iLineId,jdbcType=INTEGER},
+      C_LINE_NA = #{cLineNa,jdbcType=VARCHAR},
+      B_CAR_CHARA = #{bCarChara,jdbcType=BIGINT},
+      E_CAR_CHARA = #{eCarChara,jdbcType=INTEGER},
+      C_TRA_NUM_ARR = #{cTraNumArr,jdbcType=VARCHAR},
+      D_TRA_ARR = #{dTraArr,jdbcType=TIMESTAMP},
+      C_INV_CO = #{cInvCo,jdbcType=VARCHAR},
+      C_CANVAS_ID1 = #{cCanvasId1,jdbcType=VARCHAR},
+      C_CANVAS_ID2 = #{cCanvasId2,jdbcType=VARCHAR},
+      I_GRO_ID_STAT = #{iGroIdStat,jdbcType=INTEGER},
+      C_CONSIGNOR = #{cConsignor,jdbcType=VARCHAR},
+      B_CAR_STATE = #{bCarState,jdbcType=BIGINT},
+      D_LINE_IN = #{dLineIn,jdbcType=TIMESTAMP},
+      I_GOODS_NUM = #{iGoodsNum,jdbcType=INTEGER},
+      D_WORK = #{dWork,jdbcType=TIMESTAMP},
+      D_WORK_BEGIN = #{dWorkBegin,jdbcType=TIMESTAMP},
+      D_LINE_OUT = #{dLineOut,jdbcType=TIMESTAMP},
+      F_RATEKMS_UNLOAD = #{fRatekmsUnload,jdbcType=DECIMAL},
+      F_RATEKMS_LOAD = #{fRatekmsLoad,jdbcType=DECIMAL},
+      I_LIMIT_SPEED = #{iLimitSpeed,jdbcType=SMALLINT},
+      C_STA_CO_ROUTE_COMP = #{cStaCoRouteComp,jdbcType=VARCHAR}
+    where I_CAR_ID = #{iCarId,jdbcType=BIGINT}
+  </update>
+</mapper>

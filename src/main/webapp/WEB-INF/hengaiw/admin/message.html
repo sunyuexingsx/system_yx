@@ -1,0 +1,61 @@
+<#include "/public/_tablelayout.html"/> 
+<@tablelayout>
+<!-- Plugins css -->
+<link href="${staticPath}/assets/plugins/nestable/jquery.nestable.css" rel="stylesheet">
+
+<#assign staticPath=request.contextPath />
+<style>
+ .panel-body{
+	width: 50%;
+    float: left;
+}
+input[type=checkbox]{
+	margin:7px 0 0;
+}
+</style>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12" id="content"  >
+			<div class="row-fluid">
+				<div class="navbar" id="breadcrumb">
+					<div class="navbar-inner">
+						<ul class="breadcrumb">
+							<li><a href="/main">首页</a> <span class="divider">/</span></li>
+							<li class="active">班工作重点信息</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 数据展示 -->
+			<div class="row-fluid">
+			    <div class="span12" id="div-table-container">
+				<div class="panel panel-default">
+					
+					<div class="span6">
+						<div class="panel-body">
+							<div class="dd" id="organization_list">
+								
+							</div>
+						</div>
+					</div>
+					
+					<div class="span5">
+                       <div class="panel-body">
+                       	<h5>班工作重点信息:</h5>
+                       	<textarea rows="10" cols="80" style="width: 512px; height: 210px;" name="message_body" id="message_body"></textarea>
+                       	<button type="button" class="btn btn-primary" id="btn_send_message" style="width:100px">发送</button>
+
+                       </div>
+					</div>
+			
+			</div>
+			</div>
+			
+		</div>
+	</div>
+	</@tablelayout>
+	<!--script for this page only-->
+	<script src="${staticPath}/assets/plugins/nestable/jquery.nestable.js"></script>
+	<script src="${staticPath}/assets/admin/message.js"></script>
+	

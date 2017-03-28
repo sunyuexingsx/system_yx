@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.OrganizationMapper">
+    <resultMap id="BaseResultMap" type="com.hengaiw.model.Organization">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+       
+        <result column="icon" property="icon" jdbcType="VARCHAR"/>
+        <result column="pid" property="pid" jdbcType="BIGINT"/>
+        <result column="res" property="res" jdbcType="VARCHAR"/>
+        <result column="createdate" property="createdate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name,  icon, pid, res, createDate
+  </sql>
+
+    <select id="findOrganizationAllByPidNull" resultMap="BaseResultMap">
+        select distinct
+        <include refid="Base_Column_List"/>
+        from organization where pid =0 order by id
+    </select>
+
+    <select id="findOrganizationAllByPid" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select distinct
+        <include refid="Base_Column_List"/>
+        from organization where pid = #{pid} order by id
+    </select>
+
+    <select id="findOrganizationAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from organization order by id
+    </select>
+
+    <select id="findOrganizationById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from organization where id = #{id}
+    </select>
+
+    <delete id="deleteOrganizationById" parameterType="java.lang.Long">
+    delete from organization
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <insert id="insert" parameterType="com.hengaiw.model.Organization">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into organization (name, 
+        icon, pid, res, createdate
+        )
+        values (#{name,jdbcType=VARCHAR}, 
+        #{icon,jdbcType=VARCHAR}, #{pid,jdbcType=BIGINT}, #{res,jdbcType=VARCHAR}, now()
+        )
+    </insert>
+
+    <update id="updateOrganization" parameterType="com.hengaiw.model.Organization">
+        update organization
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="pid != null">
+                pid = #{pid,jdbcType=BIGINT},
+            </if>
+            <if test="seq != null">
+                res = #{res,jdbcType=VARCHAR},
+            </if>
+            <if test="createdate != null">
+                createdate = now(),
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

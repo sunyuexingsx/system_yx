@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dm_td_tra_textMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dm_td_tra_text" >
+    <id column="I_TRA_SEQ" property="iTraSeq" jdbcType="BIGINT" />
+    <result column="I_TRA_ID" property="iTraId" jdbcType="BIGINT" />
+    <result column="I_TRA_IN_SEQ" property="iTraInSeq" jdbcType="INTEGER" />
+    <result column="E_SYM_ARRDEP" property="eSymArrdep" jdbcType="INTEGER" />
+    <result column="D_TRA_TIME_ARR" property="dTraTimeArr" jdbcType="TIMESTAMP" />
+    <result column="D_TRA_TIME_DEP" property="dTraTimeDep" jdbcType="TIMESTAMP" />
+    <result column="I_LINE_ID_ARR" property="iLineIdArr" jdbcType="INTEGER" />
+    <result column="I_LINE_ID_DEP" property="iLineIdDep" jdbcType="INTEGER" />
+    <result column="D_FA_NOTIFY_ARR" property="dFaNotifyArr" jdbcType="TIMESTAMP" />
+    <result column="D_FA_NOTIFY_DEP" property="dFaNotifyDep" jdbcType="TIMESTAMP" />
+    <result column="I_YARD_ID" property="iYardId" jdbcType="INTEGER" />
+    <result column="I_LINE_ID_ARRDEP" property="iLineIdArrdep" jdbcType="INTEGER" />
+    <result column="E_STATE_ARR" property="eStateArr" jdbcType="INTEGER" />
+    <result column="E_STATE_DEP" property="eStateDep" jdbcType="INTEGER" />
+    <result column="B_PL_LOCK" property="bPlLock" jdbcType="BIGINT" />
+    <result column="D_DEP_REQUEST" property="dDepRequest" jdbcType="TIMESTAMP" />
+    <result column="D_ARR_AGREE" property="dArrAgree" jdbcType="TIMESTAMP" />
+    <result column="C_PHONE_OBTURATE" property="cPhoneObturate" jdbcType="VARCHAR" />
+    <result column="C_PHONE_SECTION" property="cPhoneSection" jdbcType="VARCHAR" />
+    <result column="C_USE_SECTION" property="cUseSection" jdbcType="VARCHAR" />
+    <result column="C_PHONE_CANCEL" property="cPhoneCancel" jdbcType="VARCHAR" />
+    <result column="D_TRA_TB_ARR" property="dTraTbArr" jdbcType="TIMESTAMP" />
+    <result column="D_TRA_TB_DEP" property="dTraTbDep" jdbcType="TIMESTAMP" />
+    <result column="C_OP_WORK" property="cOpWork" jdbcType="VARCHAR" />
+    <result column="C_TRA_NUM_DEP" property="cTraNumDep" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_TRA_SEQ, I_TRA_ID, I_TRA_IN_SEQ, E_SYM_ARRDEP, D_TRA_TIME_ARR, D_TRA_TIME_DEP, 
+    I_LINE_ID_ARR, I_LINE_ID_DEP, D_FA_NOTIFY_ARR, D_FA_NOTIFY_DEP, I_YARD_ID, I_LINE_ID_ARRDEP, 
+    E_STATE_ARR, E_STATE_DEP, B_PL_LOCK, D_DEP_REQUEST, D_ARR_AGREE, C_PHONE_OBTURATE, 
+    C_PHONE_SECTION, C_USE_SECTION, C_PHONE_CANCEL, D_TRA_TB_ARR, D_TRA_TB_DEP, C_OP_WORK, 
+    C_TRA_NUM_DEP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_td_tra_text
+    where I_TRA_SEQ = #{iTraSeq,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dm_td_tra_text
+    where I_TRA_SEQ = #{iTraSeq,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dm_td_tra_text" >
+    <selectKey resultType="java.lang.Long" keyProperty="iTraSeq" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_td_tra_text (I_TRA_ID, I_TRA_IN_SEQ, E_SYM_ARRDEP, 
+      D_TRA_TIME_ARR, D_TRA_TIME_DEP, I_LINE_ID_ARR, 
+      I_LINE_ID_DEP, D_FA_NOTIFY_ARR, D_FA_NOTIFY_DEP, 
+      I_YARD_ID, I_LINE_ID_ARRDEP, E_STATE_ARR, 
+      E_STATE_DEP, B_PL_LOCK, D_DEP_REQUEST, 
+      D_ARR_AGREE, C_PHONE_OBTURATE, C_PHONE_SECTION, 
+      C_USE_SECTION, C_PHONE_CANCEL, D_TRA_TB_ARR, 
+      D_TRA_TB_DEP, C_OP_WORK, C_TRA_NUM_DEP
+      )
+    values (#{iTraId,jdbcType=BIGINT}, #{iTraInSeq,jdbcType=INTEGER}, #{eSymArrdep,jdbcType=INTEGER}, 
+      #{dTraTimeArr,jdbcType=TIMESTAMP}, #{dTraTimeDep,jdbcType=TIMESTAMP}, #{iLineIdArr,jdbcType=INTEGER}, 
+      #{iLineIdDep,jdbcType=INTEGER}, #{dFaNotifyArr,jdbcType=TIMESTAMP}, #{dFaNotifyDep,jdbcType=TIMESTAMP}, 
+      #{iYardId,jdbcType=INTEGER}, #{iLineIdArrdep,jdbcType=INTEGER}, #{eStateArr,jdbcType=INTEGER}, 
+      #{eStateDep,jdbcType=INTEGER}, #{bPlLock,jdbcType=BIGINT}, #{dDepRequest,jdbcType=TIMESTAMP}, 
+      #{dArrAgree,jdbcType=TIMESTAMP}, #{cPhoneObturate,jdbcType=VARCHAR}, #{cPhoneSection,jdbcType=VARCHAR}, 
+      #{cUseSection,jdbcType=VARCHAR}, #{cPhoneCancel,jdbcType=VARCHAR}, #{dTraTbArr,jdbcType=TIMESTAMP}, 
+      #{dTraTbDep,jdbcType=TIMESTAMP}, #{cOpWork,jdbcType=VARCHAR}, #{cTraNumDep,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dm_td_tra_text" >
+    <selectKey resultType="java.lang.Long" keyProperty="iTraSeq" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_td_tra_text
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iTraId != null" >
+        I_TRA_ID,
+      </if>
+      <if test="iTraInSeq != null" >
+        I_TRA_IN_SEQ,
+      </if>
+      <if test="eSymArrdep != null" >
+        E_SYM_ARRDEP,
+      </if>
+      <if test="dTraTimeArr != null" >
+        D_TRA_TIME_ARR,
+      </if>
+      <if test="dTraTimeDep != null" >
+        D_TRA_TIME_DEP,
+      </if>
+      <if test="iLineIdArr != null" >
+        I_LINE_ID_ARR,
+      </if>
+      <if test="iLineIdDep != null" >
+        I_LINE_ID_DEP,
+      </if>
+      <if test="dFaNotifyArr != null" >
+        D_FA_NOTIFY_ARR,
+      </if>
+      <if test="dFaNotifyDep != null" >
+        D_FA_NOTIFY_DEP,
+      </if>
+      <if test="iYardId != null" >
+        I_YARD_ID,
+      </if>
+      <if test="iLineIdArrdep != null" >
+        I_LINE_ID_ARRDEP,
+      </if>
+      <if test="eStateArr != null" >
+        E_STATE_ARR,
+      </if>
+      <if test="eStateDep != null" >
+        E_STATE_DEP,
+      </if>
+      <if test="bPlLock != null" >
+        B_PL_LOCK,
+      </if>
+      <if test="dDepRequest != null" >
+        D_DEP_REQUEST,
+      </if>
+      <if test="dArrAgree != null" >
+        D_ARR_AGREE,
+      </if>
+      <if test="cPhoneObturate != null" >
+        C_PHONE_OBTURATE,
+      </if>
+      <if test="cPhoneSection != null" >
+        C_PHONE_SECTION,
+      </if>
+      <if test="cUseSection != null" >
+        C_USE_SECTION,
+      </if>
+      <if test="cPhoneCancel != null" >
+        C_PHONE_CANCEL,
+      </if>
+      <if test="dTraTbArr != null" >
+        D_TRA_TB_ARR,
+      </if>
+      <if test="dTraTbDep != null" >
+        D_TRA_TB_DEP,
+      </if>
+      <if test="cOpWork != null" >
+        C_OP_WORK,
+      </if>
+      <if test="cTraNumDep != null" >
+        C_TRA_NUM_DEP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iTraId != null" >
+        #{iTraId,jdbcType=BIGINT},
+      </if>
+      <if test="iTraInSeq != null" >
+        #{iTraInSeq,jdbcType=INTEGER},
+      </if>
+      <if test="eSymArrdep != null" >
+        #{eSymArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="dTraTimeArr != null" >
+        #{dTraTimeArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dTraTimeDep != null" >
+        #{dTraTimeDep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iLineIdArr != null" >
+        #{iLineIdArr,jdbcType=INTEGER},
+      </if>
+      <if test="iLineIdDep != null" >
+        #{iLineIdDep,jdbcType=INTEGER},
+      </if>
+      <if test="dFaNotifyArr != null" >
+        #{dFaNotifyArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dFaNotifyDep != null" >
+        #{dFaNotifyDep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iYardId != null" >
+        #{iYardId,jdbcType=INTEGER},
+      </if>
+      <if test="iLineIdArrdep != null" >
+        #{iLineIdArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="eStateArr != null" >
+        #{eStateArr,jdbcType=INTEGER},
+      </if>
+      <if test="eStateDep != null" >
+        #{eStateDep,jdbcType=INTEGER},
+      </if>
+      <if test="bPlLock != null" >
+        #{bPlLock,jdbcType=BIGINT},
+      </if>
+      <if test="dDepRequest != null" >
+        #{dDepRequest,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dArrAgree != null" >
+        #{dArrAgree,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cPhoneObturate != null" >
+        #{cPhoneObturate,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhoneSection != null" >
+        #{cPhoneSection,jdbcType=VARCHAR},
+      </if>
+      <if test="cUseSection != null" >
+        #{cUseSection,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhoneCancel != null" >
+        #{cPhoneCancel,jdbcType=VARCHAR},
+      </if>
+      <if test="dTraTbArr != null" >
+        #{dTraTbArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dTraTbDep != null" >
+        #{dTraTbDep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOpWork != null" >
+        #{cOpWork,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumDep != null" >
+        #{cTraNumDep,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dm_td_tra_text" >
+    update dm_td_tra_text
+    <set >
+      <if test="iTraId != null" >
+        I_TRA_ID = #{iTraId,jdbcType=BIGINT},
+      </if>
+      <if test="iTraInSeq != null" >
+        I_TRA_IN_SEQ = #{iTraInSeq,jdbcType=INTEGER},
+      </if>
+      <if test="eSymArrdep != null" >
+        E_SYM_ARRDEP = #{eSymArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="dTraTimeArr != null" >
+        D_TRA_TIME_ARR = #{dTraTimeArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dTraTimeDep != null" >
+        D_TRA_TIME_DEP = #{dTraTimeDep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iLineIdArr != null" >
+        I_LINE_ID_ARR = #{iLineIdArr,jdbcType=INTEGER},
+      </if>
+      <if test="iLineIdDep != null" >
+        I_LINE_ID_DEP = #{iLineIdDep,jdbcType=INTEGER},
+      </if>
+      <if test="dFaNotifyArr != null" >
+        D_FA_NOTIFY_ARR = #{dFaNotifyArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dFaNotifyDep != null" >
+        D_FA_NOTIFY_DEP = #{dFaNotifyDep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iYardId != null" >
+        I_YARD_ID = #{iYardId,jdbcType=INTEGER},
+      </if>
+      <if test="iLineIdArrdep != null" >
+        I_LINE_ID_ARRDEP = #{iLineIdArrdep,jdbcType=INTEGER},
+      </if>
+      <if test="eStateArr != null" >
+        E_STATE_ARR = #{eStateArr,jdbcType=INTEGER},
+      </if>
+      <if test="eStateDep != null" >
+        E_STATE_DEP = #{eStateDep,jdbcType=INTEGER},
+      </if>
+      <if test="bPlLock != null" >
+        B_PL_LOCK = #{bPlLock,jdbcType=BIGINT},
+      </if>
+      <if test="dDepRequest != null" >
+        D_DEP_REQUEST = #{dDepRequest,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dArrAgree != null" >
+        D_ARR_AGREE = #{dArrAgree,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cPhoneObturate != null" >
+        C_PHONE_OBTURATE = #{cPhoneObturate,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhoneSection != null" >
+        C_PHONE_SECTION = #{cPhoneSection,jdbcType=VARCHAR},
+      </if>
+      <if test="cUseSection != null" >
+        C_USE_SECTION = #{cUseSection,jdbcType=VARCHAR},
+      </if>
+      <if test="cPhoneCancel != null" >
+        C_PHONE_CANCEL = #{cPhoneCancel,jdbcType=VARCHAR},
+      </if>
+      <if test="dTraTbArr != null" >
+        D_TRA_TB_ARR = #{dTraTbArr,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dTraTbDep != null" >
+        D_TRA_TB_DEP = #{dTraTbDep,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cOpWork != null" >
+        C_OP_WORK = #{cOpWork,jdbcType=VARCHAR},
+      </if>
+      <if test="cTraNumDep != null" >
+        C_TRA_NUM_DEP = #{cTraNumDep,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where I_TRA_SEQ = #{iTraSeq,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dm_td_tra_text" >
+    update dm_td_tra_text
+    set I_TRA_ID = #{iTraId,jdbcType=BIGINT},
+      I_TRA_IN_SEQ = #{iTraInSeq,jdbcType=INTEGER},
+      E_SYM_ARRDEP = #{eSymArrdep,jdbcType=INTEGER},
+      D_TRA_TIME_ARR = #{dTraTimeArr,jdbcType=TIMESTAMP},
+      D_TRA_TIME_DEP = #{dTraTimeDep,jdbcType=TIMESTAMP},
+      I_LINE_ID_ARR = #{iLineIdArr,jdbcType=INTEGER},
+      I_LINE_ID_DEP = #{iLineIdDep,jdbcType=INTEGER},
+      D_FA_NOTIFY_ARR = #{dFaNotifyArr,jdbcType=TIMESTAMP},
+      D_FA_NOTIFY_DEP = #{dFaNotifyDep,jdbcType=TIMESTAMP},
+      I_YARD_ID = #{iYardId,jdbcType=INTEGER},
+      I_LINE_ID_ARRDEP = #{iLineIdArrdep,jdbcType=INTEGER},
+      E_STATE_ARR = #{eStateArr,jdbcType=INTEGER},
+      E_STATE_DEP = #{eStateDep,jdbcType=INTEGER},
+      B_PL_LOCK = #{bPlLock,jdbcType=BIGINT},
+      D_DEP_REQUEST = #{dDepRequest,jdbcType=TIMESTAMP},
+      D_ARR_AGREE = #{dArrAgree,jdbcType=TIMESTAMP},
+      C_PHONE_OBTURATE = #{cPhoneObturate,jdbcType=VARCHAR},
+      C_PHONE_SECTION = #{cPhoneSection,jdbcType=VARCHAR},
+      C_USE_SECTION = #{cUseSection,jdbcType=VARCHAR},
+      C_PHONE_CANCEL = #{cPhoneCancel,jdbcType=VARCHAR},
+      D_TRA_TB_ARR = #{dTraTbArr,jdbcType=TIMESTAMP},
+      D_TRA_TB_DEP = #{dTraTbDep,jdbcType=TIMESTAMP},
+      C_OP_WORK = #{cOpWork,jdbcType=VARCHAR},
+      C_TRA_NUM_DEP = #{cTraNumDep,jdbcType=VARCHAR}
+    where I_TRA_SEQ = #{iTraSeq,jdbcType=BIGINT}
+  </update>
+</mapper>

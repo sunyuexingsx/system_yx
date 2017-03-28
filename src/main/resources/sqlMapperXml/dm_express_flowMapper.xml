@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hengaiw.mapper.dm_express_flowMapper" >
+  <resultMap id="BaseResultMap" type="com.hengaiw.model.dm_express_flow" >
+    <id column="I_FLOW_ID" property="iFlowId" jdbcType="INTEGER" />
+    <result column="I_CONS_ID" property="iConsId" jdbcType="INTEGER" />
+    <result column="E_FLOW_TYPE" property="eFlowType" jdbcType="SMALLINT" />
+    <result column="E_WORK_RANGE" property="eWorkRange" jdbcType="SMALLINT" />
+    <result column="B_FLOW_STATE" property="bFlowState" jdbcType="SMALLINT" />
+    <result column="I_LOCOM_ID" property="iLocomId" jdbcType="SMALLINT" />
+    <result column="I_FLOW_NO" property="iFlowNo" jdbcType="SMALLINT" />
+    <result column="I_FLOW_ORDER" property="iFlowOrder" jdbcType="INTEGER" />
+    <result column="I_FLOW_NO_START" property="iFlowNoStart" jdbcType="SMALLINT" />
+    <result column="C_TRAIN_NUM" property="cTrainNum" jdbcType="VARCHAR" />
+    <result column="C_OP_MAKER" property="cOpMaker" jdbcType="VARCHAR" />
+    <result column="D_FA_START" property="dFaStart" jdbcType="TIMESTAMP" />
+    <result column="D_FA_END" property="dFaEnd" jdbcType="TIMESTAMP" />
+    <result column="D_PL_START" property="dPlStart" jdbcType="TIMESTAMP" />
+    <result column="D_PL_END" property="dPlEnd" jdbcType="TIMESTAMP" />
+    <result column="I_FLOW_ID_UNITE" property="iFlowIdUnite" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    I_FLOW_ID, I_CONS_ID, E_FLOW_TYPE, E_WORK_RANGE, B_FLOW_STATE, I_LOCOM_ID, I_FLOW_NO, 
+    I_FLOW_ORDER, I_FLOW_NO_START, C_TRAIN_NUM, C_OP_MAKER, D_FA_START, D_FA_END, D_PL_START, 
+    D_PL_END, I_FLOW_ID_UNITE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dm_express_flow
+    where I_FLOW_ID = #{iFlowId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dm_express_flow
+    where I_FLOW_ID = #{iFlowId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hengaiw.model.dm_express_flow" >
+    <selectKey resultType="java.lang.Integer" keyProperty="iFlowId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_express_flow (I_CONS_ID, E_FLOW_TYPE, E_WORK_RANGE, 
+      B_FLOW_STATE, I_LOCOM_ID, I_FLOW_NO, 
+      I_FLOW_ORDER, I_FLOW_NO_START, C_TRAIN_NUM, 
+      C_OP_MAKER, D_FA_START, D_FA_END, 
+      D_PL_START, D_PL_END, I_FLOW_ID_UNITE
+      )
+    values (#{iConsId,jdbcType=INTEGER}, #{eFlowType,jdbcType=SMALLINT}, #{eWorkRange,jdbcType=SMALLINT}, 
+      #{bFlowState,jdbcType=SMALLINT}, #{iLocomId,jdbcType=SMALLINT}, #{iFlowNo,jdbcType=SMALLINT}, 
+      #{iFlowOrder,jdbcType=INTEGER}, #{iFlowNoStart,jdbcType=SMALLINT}, #{cTrainNum,jdbcType=VARCHAR}, 
+      #{cOpMaker,jdbcType=VARCHAR}, #{dFaStart,jdbcType=TIMESTAMP}, #{dFaEnd,jdbcType=TIMESTAMP}, 
+      #{dPlStart,jdbcType=TIMESTAMP}, #{dPlEnd,jdbcType=TIMESTAMP}, #{iFlowIdUnite,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hengaiw.model.dm_express_flow" >
+    <selectKey resultType="java.lang.Integer" keyProperty="iFlowId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into dm_express_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iConsId != null" >
+        I_CONS_ID,
+      </if>
+      <if test="eFlowType != null" >
+        E_FLOW_TYPE,
+      </if>
+      <if test="eWorkRange != null" >
+        E_WORK_RANGE,
+      </if>
+      <if test="bFlowState != null" >
+        B_FLOW_STATE,
+      </if>
+      <if test="iLocomId != null" >
+        I_LOCOM_ID,
+      </if>
+      <if test="iFlowNo != null" >
+        I_FLOW_NO,
+      </if>
+      <if test="iFlowOrder != null" >
+        I_FLOW_ORDER,
+      </if>
+      <if test="iFlowNoStart != null" >
+        I_FLOW_NO_START,
+      </if>
+      <if test="cTrainNum != null" >
+        C_TRAIN_NUM,
+      </if>
+      <if test="cOpMaker != null" >
+        C_OP_MAKER,
+      </if>
+      <if test="dFaStart != null" >
+        D_FA_START,
+      </if>
+      <if test="dFaEnd != null" >
+        D_FA_END,
+      </if>
+      <if test="dPlStart != null" >
+        D_PL_START,
+      </if>
+      <if test="dPlEnd != null" >
+        D_PL_END,
+      </if>
+      <if test="iFlowIdUnite != null" >
+        I_FLOW_ID_UNITE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iConsId != null" >
+        #{iConsId,jdbcType=INTEGER},
+      </if>
+      <if test="eFlowType != null" >
+        #{eFlowType,jdbcType=SMALLINT},
+      </if>
+      <if test="eWorkRange != null" >
+        #{eWorkRange,jdbcType=SMALLINT},
+      </if>
+      <if test="bFlowState != null" >
+        #{bFlowState,jdbcType=SMALLINT},
+      </if>
+      <if test="iLocomId != null" >
+        #{iLocomId,jdbcType=SMALLINT},
+      </if>
+      <if test="iFlowNo != null" >
+        #{iFlowNo,jdbcType=SMALLINT},
+      </if>
+      <if test="iFlowOrder != null" >
+        #{iFlowOrder,jdbcType=INTEGER},
+      </if>
+      <if test="iFlowNoStart != null" >
+        #{iFlowNoStart,jdbcType=SMALLINT},
+      </if>
+      <if test="cTrainNum != null" >
+        #{cTrainNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cOpMaker != null" >
+        #{cOpMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="dFaStart != null" >
+        #{dFaStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dFaEnd != null" >
+        #{dFaEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dPlStart != null" >
+        #{dPlStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dPlEnd != null" >
+        #{dPlEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iFlowIdUnite != null" >
+        #{iFlowIdUnite,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hengaiw.model.dm_express_flow" >
+    update dm_express_flow
+    <set >
+      <if test="iConsId != null" >
+        I_CONS_ID = #{iConsId,jdbcType=INTEGER},
+      </if>
+      <if test="eFlowType != null" >
+        E_FLOW_TYPE = #{eFlowType,jdbcType=SMALLINT},
+      </if>
+      <if test="eWorkRange != null" >
+        E_WORK_RANGE = #{eWorkRange,jdbcType=SMALLINT},
+      </if>
+      <if test="bFlowState != null" >
+        B_FLOW_STATE = #{bFlowState,jdbcType=SMALLINT},
+      </if>
+      <if test="iLocomId != null" >
+        I_LOCOM_ID = #{iLocomId,jdbcType=SMALLINT},
+      </if>
+      <if test="iFlowNo != null" >
+        I_FLOW_NO = #{iFlowNo,jdbcType=SMALLINT},
+      </if>
+      <if test="iFlowOrder != null" >
+        I_FLOW_ORDER = #{iFlowOrder,jdbcType=INTEGER},
+      </if>
+      <if test="iFlowNoStart != null" >
+        I_FLOW_NO_START = #{iFlowNoStart,jdbcType=SMALLINT},
+      </if>
+      <if test="cTrainNum != null" >
+        C_TRAIN_NUM = #{cTrainNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cOpMaker != null" >
+        C_OP_MAKER = #{cOpMaker,jdbcType=VARCHAR},
+      </if>
+      <if test="dFaStart != null" >
+        D_FA_START = #{dFaStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dFaEnd != null" >
+        D_FA_END = #{dFaEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dPlStart != null" >
+        D_PL_START = #{dPlStart,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dPlEnd != null" >
+        D_PL_END = #{dPlEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iFlowIdUnite != null" >
+        I_FLOW_ID_UNITE = #{iFlowIdUnite,jdbcType=INTEGER},
+      </if>
+    </set>
+    where I_FLOW_ID = #{iFlowId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hengaiw.model.dm_express_flow" >
+    update dm_express_flow
+    set I_CONS_ID = #{iConsId,jdbcType=INTEGER},
+      E_FLOW_TYPE = #{eFlowType,jdbcType=SMALLINT},
+      E_WORK_RANGE = #{eWorkRange,jdbcType=SMALLINT},
+      B_FLOW_STATE = #{bFlowState,jdbcType=SMALLINT},
+      I_LOCOM_ID = #{iLocomId,jdbcType=SMALLINT},
+      I_FLOW_NO = #{iFlowNo,jdbcType=SMALLINT},
+      I_FLOW_ORDER = #{iFlowOrder,jdbcType=INTEGER},
+      I_FLOW_NO_START = #{iFlowNoStart,jdbcType=SMALLINT},
+      C_TRAIN_NUM = #{cTrainNum,jdbcType=VARCHAR},
+      C_OP_MAKER = #{cOpMaker,jdbcType=VARCHAR},
+      D_FA_START = #{dFaStart,jdbcType=TIMESTAMP},
+      D_FA_END = #{dFaEnd,jdbcType=TIMESTAMP},
+      D_PL_START = #{dPlStart,jdbcType=TIMESTAMP},
+      D_PL_END = #{dPlEnd,jdbcType=TIMESTAMP},
+      I_FLOW_ID_UNITE = #{iFlowIdUnite,jdbcType=INTEGER}
+    where I_FLOW_ID = #{iFlowId,jdbcType=INTEGER}
+  </update>
+</mapper>

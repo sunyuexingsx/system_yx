@@ -1,0 +1,393 @@
+<#macro layout>
+<#assign contextPath=request.contextPath />
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="恒爱科技">
+		<meta name="author" content="恒爱科技">
+		<link rel="shortcut icon" href="${contextPath}/assets/images/icon.png">
+		<title>铁路运输安全管理控制系统</title>
+		<link href="${contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/css/core.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/css/icons.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/css/components.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/css/pages.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/css/menu.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/css/responsive.css" rel="stylesheet" type="text/css">
+		<link href="${contextPath}/assets/plugins/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+		<script src="${contextPath}/assets/js/modernizr.min.js"></script>
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	</head>
+	<body class="fixed-left">
+		<!-- Begin page -->
+		<div id="wrapper">
+			<!-- Top Bar Start -->
+			<div class="topbar">
+				<!-- LOGO -->
+				<div class="topbar-left">
+					<div class="text-center">
+						<a href="index" class="logo">
+							<img width="30px" alt="LOGO" src="${contextPath}/assets/images/icon.png">
+							<span>管理控制系统</span>
+						</a>
+					</div>
+				</div>
+				<!-- Button mobile view to collapse sidebar menu -->
+				<div class="navbar navbar-default" role="navigation">
+					<div class="container">
+						<div class="">
+							<div class="pull-left">
+								<button class="button-menu-mobile open-left">
+								<i class="fa fa-bars"></i>
+							</button>
+								<span class="clearfix"></span>
+							</div>
+							
+							<ul class="nav navbar-nav navbar-right pull-right">
+								<li class="dropdown hidden-xs">
+									<a href="#" data-target="#" class="dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="true"> <i class="md md-notifications"></i> <span class="badge badge-xs badge-danger">3</span>
+									</a>
+									<ul class="dropdown-menu dropdown-menu-lg">
+										<li class="text-center notifi-title">消息通知</li>
+										<li class="list-group">
+											<!-- list item-->
+											<a href="javascript:void(0);" class="list-group-item">
+												<div class="media">
+													<div class="pull-left">
+														<em class="fa fa-bell-o fa-2x text-danger"></em>
+													</div>
+													<div class="media-body clearfix">
+														<div class="media-heading">系统通知</div>
+														<p class="m-0">
+															<small>您有 <span class="text-primary">2</span>
+															未读的系统通知
+														</small>
+														</p>
+													</div>
+												</div>
+											</a>
+											<!-- last list item -->
+											<a href="javascript:void(0);" class="list-group-item"> <small>查看所有通知</small>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="hidden-xs">
+									<a href="#" id="btn-fullscreen" class="waves-effect"><i class="md md-crop-free"></i></a>
+								</li>
+								<li class="hidden-xs">
+									<a href="#" class="right-bar-toggle waves-effect"><i class="md md-chat"></i></a>
+								</li>
+								<li class="dropdown">
+									<a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="${contextPath}/assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+									<ul class="dropdown-menu">
+										<li><a href="javascript:void(0)"><i
+											class="md md-settings"></i> 设置</a></li>
+									
+										<li><a href="javascript:logout();"><i
+											class="md md-settings-power"></i> 退出</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+					</div>
+				</div>
+			</div>
+			<!-- Top Bar End -->
+
+			<!-- ========== Left Sidebar Start ========== -->
+
+			<div class="left side-menu">
+				<div class="sidebar-inner slimscrollleft">
+					<div class="user-details">
+						<div class="pull-left">
+							<img src="${contextPath}/assets/images/users/avatar-1.jpg" alt="" class="thumb-md img-circle">
+						</div>
+						<div class="user-info">
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><!-- <@shiro.principal/> --><span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="javascript:void(0)"><i class="md md-settings"></i>
+									 设置
+									 </a>
+									</li>
+									
+									<li>
+										<a href="javascript:logout();"><i class="md md-settings-power"></i>
+									 退出
+									</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--- Divider -->
+					<div id="sidebar-menu">
+						<ul>
+							<li>
+								<a href="javascript:ha_openitem('/main');" class="waves-effect waves-light">
+									<i class="md md-home"></i>
+									<span>首页</span>
+								</a>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-directions-walk"></i>
+									<span>人员轨迹追踪</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<!-- <@shiro.hasPermission name="/main"> -->
+									<li><a href="javascript:ha_openitem('/main');">当班人员信息</a></li>
+									<!-- </@shiro.hasPermission> -->
+									<li><a href="javascript:ha_openitem('/qcwork/');">货检作业</a></li>
+									<li><a href="javascript:ha_openitem('/endwork/');">列尾作业</a></li>
+									<li><a href="javascript:ha_openitem('/airwork/');">排风作业</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">调车作业</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">防溜巡检</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">施工作业</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">接发车作业</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-directions-ferry"></i>
+									<span>应急处理</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">应急作业</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">应急预案查询</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">防灾作业</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">非正常接发车</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-layers"></i>
+									<span>生产指挥</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">	
+									<li><a href="javascript:ha_openitem('/message/manager');">班工作重点信息</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">阶段计划</a></li>
+									<li><a href="javascript:ha_openitem('/expresscars');">现车信息</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">作业信息</a></li>
+									<li><a href="javascript:ha_openitem('/treegrid/');">作业指标</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-traffic"></i>
+									<span>指标预警</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">快运预警</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">中停预警</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">保有车预警</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-local-hospital"></i>
+									<span>安全风险预警</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">日预警</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">日安全信息</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">防灾信息</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">现场图像取证</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-search"></i>
+									<span>综合信息查询</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">规章制度</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">作业指导书</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">技术指南</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">作业流程图</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-radio"></i>
+									<span>培训教育</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">警示教育</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">生产培训</a></li>
+								</ul>
+							</li>
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md md-brightness-low"></i>
+									<span>维护管理</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">人员考核信息</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">用户管理</a></li>
+									<li><a href="javascript:ha_openitem('${contextPath}/admin/mainpage');">数据维护</a></li>
+								</ul>
+							</li>
+							
+							<li class="has_sub">
+								<a href="#" class="waves-effect waves-light">
+									<i class="md  md-account-child"></i>
+									<span>权限管理</span>
+									<span class="pull-right"><i class="md md-add"></i></span>
+								</a>
+								<ul class="list-unstyled">
+									
+									<li><a href="javascript:ha_openitem('/organization/manager');">部门管理</a></li>
+									
+									<li><a href="javascript:ha_openitem('/user/manager');">用户管理</a></li>
+									
+									<li><a href="javascript:ha_openitem('/role/manager');">角色管理</a></li>
+									
+									<li><a href="javascript:ha_openitem('/resource/manager');">资源管理</a></li>
+									
+								</ul>
+							</li>
+							
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!-- Left Sidebar End -->
+			<!-- ============================================================== -->
+			<!-- Start right Content here -->
+			<!-- ============================================================== -->
+			<div class="content-page">
+				<!-- Start content -->
+				<div class="content">
+					<div class="container">
+						<#nested>
+					</div>
+							<!-- container -->
+					
+				</div>
+						<!-- content -->
+					
+				<footer class="footer text-right" id="footer"> 2016 © 北京全路通信信号研究设计院集团有限公司. </footer>
+					
+			</div>
+					<!-- ============================================================== -->
+					<!-- End Right content here -->
+					<!-- ============================================================== -->
+				<!-- Right Sidebar -->
+				<div class="side-bar right-bar nicescroll">
+					<h4 class="text-center">好友列表</h4>
+					<div class="contact-list nicescroll">
+						<ul class="list-group contacts-list">
+							<li class="list-group-item">
+								<a href="#">
+									<div class="avatar">
+										<img src="${contextPath}/assets/images/users/avatar-1.jpg" alt="">
+									</div>
+									<span class="name">王彬鉴</span> <i class="fa fa-circle online"></i>
+								</a>
+								<span class="clearfix"></span>
+							</li>
+							<li class="list-group-item">
+								<a href="#">
+									<div class="avatar">
+										<img src="${contextPath}/assets/images/users/avatar-2.jpg" alt="">
+									</div>
+									<span class="name">郑维亮</span> <i class="fa fa-circle online"></i>
+								</a>
+								<span class="clearfix"></span>
+							</li>
+							<li class="list-group-item">
+								<a href="#">
+									<div class="avatar">
+										<img src="${contextPath}/assets/images/users/avatar-3.jpg" alt="">
+									</div>
+									<span class="name">张建辉</span> <i class="fa fa-circle online"></i>
+								</a>
+								<span class="clearfix"></span>
+							</li>
+							<li class="list-group-item">
+								<a href="#">
+									<div class="avatar">
+										<img src="${contextPath}/assets/images/users/avatar-4.jpg" alt="">
+									</div>
+									<span class="name">机器人</span> <i class="fa fa-circle online"></i>
+								</a>
+								<span class="clearfix"></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /Right-bar -->
+		</div>
+		
+		
+		<!-- Main  -->
+		<script src="${contextPath}/assets/js/jquery.min.js"></script>
+		<script src="${contextPath}/assets/js/bootstrap.min.js"></script>
+		<script src="${contextPath}/assets/js/detect.js"></script>
+		<script src="${contextPath}/assets/js/fastclick.js"></script>
+		<script src="${contextPath}/assets/js/jquery.slimscroll.js"></script>
+		<script src="${contextPath}/assets/js/jquery.blockUI.js"></script>
+		<script src="${contextPath}/assets/js/waves.js"></script>
+		<script src="${contextPath}/assets/js/wow.min.js"></script>
+		<script src="${contextPath}/assets/js/jquery.nicescroll.js"></script>
+		<script src="${contextPath}/assets/js/jquery.scrollTo.min.js"></script>
+
+		<script src="${contextPath}/assets/js/jquery.app.js"></script>
+
+		<!-- moment js  -->
+		<script src="${contextPath}/assets/plugins/moment/moment.js"></script>
+
+		<!-- chat app  -->
+		<script src="${contextPath}/assets/pages/jquery.chat.js"></script>
+		<script src="${contextPath}/assets/plugins/modal-effect/js/modalEffects.js"></script>
+		<!--form sweetalert-->
+        <script type="text/javascript" src="${contextPath}/assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
+		<!--form validation-->
+        <script type="text/javascript" src="${contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+		<script src="${contextPath}/assets/public/common.js"></script>
+		<script type="text/javascript">
+			var basePath="${contextPath}";
+		</script>
+		<script>
+			var resizefunc = [];
+			$(document).ready(function(){
+				var pagestyle = function() {
+					var iframe = $("#workspace");
+					var h = $(window).height() - iframe.offset().top;
+					var w = $(window).width() - iframe.offset().left;
+					if(h < 300) h = 300;
+					if(w < 973) w = 973;
+					
+					iframe.height(h-80);
+					iframe.width(w);
+				}
+				pagestyle();
+				$(window).resize(pagestyle);
+			});
+			
+		</script>
+	</body>
+
+</html>
+</#macro>

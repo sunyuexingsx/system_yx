@@ -1,0 +1,49 @@
+<#macro tablelayout> 
+<#assign staticPath=request.contextPath />
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Bootstrap -->
+<link href="${staticPath}/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="${staticPath}/assets/css/common.css" rel="stylesheet" type="text/css">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="${staticPath}/assets/plugins/font-awesome-4.2.0/css/font-awesome.min.css">
+<!-- DataTables CSS start-->
+<link rel="stylesheet" href="${staticPath}/assets/plugins/DataTables-1.10.12/media/css/dataTables.bootstrap.css">
+<link rel="stylesheet" href="${staticPath}/assets/plugins/datatables/jquery.dataTables.min.css">
+<link rel="stylesheet" href="${staticPath}/assets/plugins/datatables/dataTables.fontAwesome.css">
+<!-- DataTables CSS end-->
+<link rel="stylesheet" href="${staticPath}/assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
+<link href="${staticPath}/assets/css/components.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="${staticPath}/assets/css/user-manage.css">
+
+</head>
+<!-- 单页面的头部说明 -->
+<body>
+<#nested>
+<script src="${staticPath}/assets/js/json2.js"></script>
+<!-- JQuery -->
+<script src="${staticPath}/assets/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="${staticPath}/assets/js/bootstrap.min.js"></script>
+<!-- SpinJS-->
+ <script src="${staticPath}/assets/js/jquery.spin.merge.js"></script>
+<!-- lhgdialog -->
+<script src="${staticPath}/assets/plugins/lhgdialog-4.2.0/lhgdialog.js?skin=bootstrap2"></script>
+<!--form validation-->
+<script type="text/javascript" src="${staticPath}/assets/plugins/jquery-validation/dist/jquery.metadata.js"></script>
+<script type="text/javascript" src="${staticPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<!-- DataTables JS-->
+<script src="${staticPath}/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="${staticPath}/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="${staticPath}/assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="${staticPath}/assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js" type="text/javascript" charset="UTF-8"></script>
+<!-- DataTables JS end-->
+<script src="${staticPath}/assets/admin/constant.js"></script>
+<script src="${staticPath}/assets/public/common.js"></script>
+<script type="text/javascript">
+	var basePath="${staticPath}";
+</script>
+</body>
+</#macro>

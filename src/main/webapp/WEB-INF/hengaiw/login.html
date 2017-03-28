@@ -1,0 +1,42 @@
+<#include "/public/_layout.html"/>
+<@layout>
+<div class="panel panel-color panel-primary panel-pages" id="wapper">
+	<div class="panel-heading bg-img">
+		<div class="bg-overlay"></div>
+		<h3 class="text-center m-t-10 text-white">
+			铁路运输安全管理控制系统
+		</h3>
+	</div>
+
+
+	<div class="panel-body">
+		<form class="form-horizontal m-t-20" id="loginform">
+
+			<div class="form-group">
+				<div class="col-xs-12">
+					<input class="form-control input-lg" name="username" id="username" type="text" required="" placeholder="输入用户名">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-12">
+					<input class="form-control input-lg" name="password" id="password" type="password" required="" placeholder="输入登录密码">
+				</div>
+			</div>
+
+			
+
+			<div class="form-group text-center m-t-40">
+				<div class="col-xs-12">
+					<input type="hidden" name="usertype" value="1"/>
+					<button class="btn btn-primary btn-lg w-lg waves-effect waves-light"  type="submit">登录</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</div>
+</@layout>
+<script src="${contextPath}/assets/public/login.js"></script>
+</body>
+</html>
